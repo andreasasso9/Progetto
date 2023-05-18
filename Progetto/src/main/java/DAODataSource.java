@@ -20,14 +20,14 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
+			ds = (DataSource) envCtx.lookup("jdbc/progetto");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
 
-	private static final String TABLE_NAME = "product";
+	private static final String TABLE_NAME = "scarpa";
 
 	@Override
 	public synchronized void doSave(Scarpa product) throws SQLException {
@@ -35,15 +35,18 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		/*String insertSQL = "INSERT INTO " + DAODataSource.TABLE_NAME
-				+ " (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
-				implementare query
-		*/
+		String insertSQL = "INSERT INTO ? VALUES (nome, taglia, costo, foto) VALUES (?, ?, ?, ?)";
+				
 		try {
 			connection = ds.getConnection();
-			/*
-			 * implementare inserimento scarpa
-			 * */
+			
+			preparedStatement=connection.prepareStatement(insertSQL);
+			
+			preparedStatement.setString(1, TABLE_NAME);
+			preparedStatement.setString(2, product.getNome());
+			preparedStatement.setInt(3, product.getTaglia());
+			preparedStatement.setDouble(4, product.getCosto());
+			preparedStatement.setByte(5, product.getFoto());
 
 			preparedStatement.executeUpdate();
 
@@ -65,14 +68,15 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
-		/*
-		String deleteSQL = "DELETE FROM " + DAODataSource.TABLE_NAME + " WHERE CODE = ?";
-		implementare query
-		*/
+		
+		String deleteSQL = "DELETE FROM ? WHERE codice = ?";
+		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			
+			preparedStatement.setString(1, TABLE_NAME);
+			preparedStatement.setInt(2, code);
 
 			result = preparedStatement.executeUpdate();
 
