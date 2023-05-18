@@ -6,7 +6,7 @@ public interface IBeanDAO<T> {
 
 	public boolean doDelete(int code) throws SQLException;
 
-	public T doRetrieveByKey(int code) throws SQLException;
+	public T doRetrieveByKey(String code) throws SQLException;
 	
 	public Collection<T> doRetrieveAll(String order) throws SQLException;
 }

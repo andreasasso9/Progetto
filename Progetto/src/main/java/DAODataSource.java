@@ -27,26 +27,23 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 		}
 	}
 
-	private static final String TABLE_NAME = "scarpa";
-
 	@Override
 	public synchronized void doSave(Scarpa product) throws SQLException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO ? VALUES (nome, taglia, costo, foto) VALUES (?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO scarpa VALUES (nome, taglia, costo, foto) VALUES (?, ?, ?, ?)";
 				
 		try {
 			connection = ds.getConnection();
 			
 			preparedStatement=connection.prepareStatement(insertSQL);
 			
-			preparedStatement.setString(1, TABLE_NAME);
-			preparedStatement.setString(2, product.getNome());
-			preparedStatement.setInt(3, product.getTaglia());
-			preparedStatement.setDouble(4, product.getCosto());
-			preparedStatement.setByte(5, product.getFoto());
+			preparedStatement.setString(1, product.getNome());
+			preparedStatement.setInt(2, product.getTaglia());
+			preparedStatement.setDouble(3, product.getCosto());
+			preparedStatement.setByte(4, product.getFoto());
 
 			preparedStatement.executeUpdate();
 
@@ -69,14 +66,13 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 
 		int result = 0;
 		
-		String deleteSQL = "DELETE FROM ? WHERE codice = ?";
+		String deleteSQL = "DELETE FROM scarpa WHERE codice = ?";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
 			
-			preparedStatement.setString(1, TABLE_NAME);
-			preparedStatement.setInt(2, code);
+			preparedStatement.setInt(1, code);
 
 			result = preparedStatement.executeUpdate();
 
@@ -99,27 +95,29 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 
 		Collection<Scarpa> products = new LinkedList<Scarpa>();
 
-		/*
-		String selectSQL = "SELECT * FROM " + DAODataSource.TABLE_NAME;
-		implementa query
-		
+		String selectSQL=null;
 
 		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
+			selectSQL = "SELECT * FROM scarpa ORDER BY ?";
 		}
-		*/
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setString(1, order);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				Scarpa bean = new Scarpaa();
+				Scarpa scarpa = new Scarpa();
 
-				/*implementa query*/
-				products.add(bean);
+				scarpa.setNome(rs.getString("nome"));
+				scarpa.setCosto(rs.getDouble("costo"));
+				scarpa.setTaglia(rs.getInt("taglia"));
+				scarpa.setFoto(rs.getByte("foto"));
+				
+				products.add(scarpa);
 			}
 
 		} finally {
@@ -135,23 +133,22 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 	}
 	
 	@Override
-	public synchronized Scarpa doRetrieveByKey(int code) throws SQLException {
+	public synchronized Scarpa doRetrieveByKey(String nome) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		Scarpa bean = new Scarpa();
-		/*
-		String selectSQL = "SELECT * FROM " + DAODataSource.TABLE_NAME + " WHERE CODE = ?";
-		implementa query
-		*/
+		Scarpa scarpa = new Scarpa();
+		String selectSQL = "SELECT * FROM scarpa WHERE CODE = ?";
+		
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, nome);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				/*
-				 * implementa query
-				 * */
+				scarpa.setNome(rs.getString("nome"));
+				scarpa.setCosto(rs.getDouble("costo"));
+				scarpa.setTaglia(rs.getInt("taglia"));
+				scarpa.setFoto(rs.getByte("foto"));
 			}
 		} finally {
 			try {
@@ -162,7 +159,7 @@ public class DAODataSource implements IBeanDAO<Scarpa> {
 					connection.close();
 			}
 		}
-		return bean;
+		return scarpa;
 	}
 }
 
