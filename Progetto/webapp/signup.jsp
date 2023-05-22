@@ -9,22 +9,22 @@
 <body>
 	<form action="Signup" method="post">
 		<label for="nome">Nome: </label>
-		<input type="text" placeholder="Nome" id="nome">
+		<input type="text" name="nome" placeholder="Nome" id="nome">
 		
 		<label for="Cognome">Cognome: </label>
-		<input type="text" placeholder="Cognome" id="cognome">
+		<input type="text" name="cognome" placeholder="Cognome" id="cognome">
 		
 		<label for="telefono">Telefono: </label>
-		<input type="tel" placeholder="Telefono" id="telefono">
+		<input type="tel" name="telefono" placeholder="Telefono" id="telefono">
 		
 		<label for="username">Username: </label>
-		<input type="text" placeholder="username" id="username">
+		<input type="text" name="username" placeholder="username" id="username">
 		
 		<label for="email">E-mail: </label>
-		<input type="email" placeholder="E-mail" id="email">
+		<input type="email" name="email" placeholder="E-mail" id="email">
 		
 		<label for="password">Password: </label>
-		<input type="password" placeholder="password" id="password">
+		<input type="password" name="password" placeholder="password" id="password">
 		
 		<input type="submit">
 		<input type="reset">

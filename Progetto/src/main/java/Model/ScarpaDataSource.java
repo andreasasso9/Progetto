@@ -1,3 +1,4 @@
+package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import DTO.Scarpa;
 
-public class DAODataSource implements IBeanDAO<Scarpa> {
+public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 
 	private static DataSource ds;
 
