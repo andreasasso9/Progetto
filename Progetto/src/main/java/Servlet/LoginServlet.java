@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 				
 				response.sendRedirect("index.jsp");
 			} else {
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("login.html");
 			}
 		} catch (SQLException e) {
 		}

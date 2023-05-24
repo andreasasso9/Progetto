@@ -18,7 +18,7 @@
 		<h1>Welcome <%=user%></h1>
 	<%}%>
 		
-	<a href="login.jsp">Log in</a>
-	<a href="signup.jsp">Sign up</a>
+	<a href="login.html">Log in</a>
+	<a href="signup.html">Sign up</a>
 </body>
 </html>
