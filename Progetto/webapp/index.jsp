@@ -1,3 +1,4 @@
+<%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,6 +8,16 @@
 <title>LowSneakers</title>
 </head>
 <body>
+
+	<%
+		String user=(String) session.getAttribute("user");
+		if (user==null){
+	%>
+		<h1>Welcome user</h1>
+	<%}else{%>
+		<h1>Welcome <%=user%></h1>
+	<%}%>
+		
 	<a href="login.jsp">Log in</a>
 	<a href="signup.jsp">Sign up</a>
 </body>

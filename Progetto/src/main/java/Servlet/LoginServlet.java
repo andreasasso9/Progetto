@@ -36,9 +36,9 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession currentSession=request.getSession();
 				currentSession.setAttribute("user", username);
-				System.out.println("accesso effettuato");//rimuovere
+				
+				response.sendRedirect("index.jsp");
 			} else {
-				System.out.println("accesso negato");//rimuovere
 				response.sendRedirect("login.jsp");
 			}
 		} catch (SQLException e) {
