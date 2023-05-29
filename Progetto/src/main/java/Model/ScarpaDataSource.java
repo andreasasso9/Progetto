@@ -94,7 +94,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<Scarpa> products = new LinkedList<Scarpa>();
+		Collection<Scarpa> products = new LinkedList<>();
 
 		String selectSQL=null;
 

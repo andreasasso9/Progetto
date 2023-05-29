@@ -2,9 +2,6 @@ package Servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,31 +11,34 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.LoginDataSource;
+import Model.PasswordHash;
 
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/Login")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet implements PasswordHash{
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username;
 		String password;
-		List<String> errors=new ArrayList<>();
+		String errors="";
 		boolean check=false;
 		RequestDispatcher dispatcher=request.getRequestDispatcher("login.jsp");
 		
 		username=request.getParameter("username");
-		password=request.getParameter("password");//la password deve essere codificata prima di essere controllata
+		password=request.getParameter("password");
+		
+		password=toHash(password);
 
 		LoginDataSource checkLogin=new LoginDataSource();
 
 		try {
 			if (username.isBlank()) {
-				errors.add("Inserisci la Username");
+				errors+="Inserisci la Username<br>";
 			}
 
 			if (password.isBlank())
-				errors.add("Inserisci la Password");
+				errors+="Inserisci la Password<br>";
 
 			if (errors.isEmpty()) {
 				check=checkLogin.checkUser(username, password);

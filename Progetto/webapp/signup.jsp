@@ -12,6 +12,9 @@
 		<label for="Cognome">Cognome: </label>
 		<input type="text" name="cognome" placeholder="Cognome" id="cognome">
 		
+		<label for="età">Età: </label>
+		<input type="number" name="età" placeholder="età" id="età">
+		
 		<label for="telefono">Telefono: </label>
 		<input type="tel" name="telefono" placeholder="Telefono" id="telefono">
 		

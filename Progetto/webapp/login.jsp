@@ -15,17 +15,16 @@
 		<input type="submit" value="Log in">
 	</form>
 	<%	@SuppressWarnings("unchecked")
-		List<String> errors=(List<String>) request.getAttribute("errors");
+		String errors=(String) request.getAttribute("errors");
 		
-		if (errors!=null)
-			for (String s: errors){ %>
-				<%=s %><br>
-			<%} %>
-	<%
-		String message=(String) request.getAttribute("notfound");
+		if (errors!=null){%>
+			<%=errors %>
+		<%}else{ %>	
+			
+			<%String message=(String) request.getAttribute("notfound");
 		
-		if (message!=null){%>
-			<%=message %>
-		<%} %>
+			if (message!=null){%>
+				<%=message %>
+			<%}} %>
 </body>
 </html>
