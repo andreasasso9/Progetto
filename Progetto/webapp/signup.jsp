@@ -29,6 +29,12 @@
 		
 		<input type="submit">
 		<input type="reset">
+		
+		<%
+			String errors=(String) request.getAttribute("errors");
+		
+			if (errors!=null)%>
+				<%=errors %>
 	</form>
 </body>
 </html>

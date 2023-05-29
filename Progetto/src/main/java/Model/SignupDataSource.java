@@ -24,7 +24,7 @@ public class SignupDataSource {
 		}
 	}
 	
-	public boolean insertNewUser(String nome, String cognome, String username, String email, String password, int età, String... telefoni) throws SQLException {
+	public synchronized void insertNewUser(String nome, String cognome, String username, String email, String password, int età, String... telefoni) throws SQLException {
 		Connection con=null;
 		PreparedStatement psUser=null, psTel=null;
 		
@@ -51,8 +51,8 @@ public class SignupDataSource {
 				psTel.setString(1, s);
 				
 				System.out.println("tel insert: "+ psTel.executeUpdate());
-				return true;
 			}
+			
 		} finally {
 			try {
 				if (psUser!=null)
@@ -64,6 +64,5 @@ public class SignupDataSource {
 					con.close();
 			}
 		}
-		return true;
 	}
 }

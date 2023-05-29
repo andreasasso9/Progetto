@@ -14,17 +14,11 @@
 		<input type="password" name="password" placeholder="Password" id="password">
 		<input type="submit" value="Log in">
 	</form>
-	<%	@SuppressWarnings("unchecked")
+	<%
 		String errors=(String) request.getAttribute("errors");
 		
 		if (errors!=null){%>
 			<%=errors %>
-		<%}else{ %>	
-			
-			<%String message=(String) request.getAttribute("notfound");
-		
-			if (message!=null){%>
-				<%=message %>
-			<%}} %>
+		<%} %>
 </body>
 </html>

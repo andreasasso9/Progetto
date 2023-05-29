@@ -1,12 +1,16 @@
 package Servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.CheckFields;
 import Model.PasswordHash;
 import Model.SignupDataSource;
 
@@ -16,19 +20,60 @@ public class SignupServlet extends HttpServlet implements PasswordHash {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome, cognome, telefono, username, email, password;
-		int età;
+		String nome, cognome, telefoni[], username, email, password, età;
+		boolean usernameValid=false, emailValid=false;
+		RequestDispatcher dispatcherToSignup=request.getRequestDispatcher("signup.jsp");
 		
 		nome=request.getParameter("nome");
 		cognome=request.getParameter("cognome");
-		età=Integer.parseInt(request.getParameter("età"));
-		telefono=request.getParameter("telefono");
+		età=request.getParameter("età");
+		telefoni=request.getParameterValues("telefono");
 		username=request.getParameter("username");
 		email=request.getParameter("email");
 		password=request.getParameter("password");
-		password=toHash(password);
 		
 		SignupDataSource ds=new SignupDataSource();
+		CheckFields check=new CheckFields();
+		
+		try {
+			String errors="";
+			
+			if (nome.isBlank())
+				errors+="Inserisci il nome<br>";
+			if (cognome.isBlank())
+				errors+="Inserisci il cognome<br>";
+			if (età.isBlank())
+				errors+="Inserisci l'età<br>";
+			if (username.isBlank())
+				errors+="Inserisci la username<br>";
+			if (email.isBlank())
+				errors+="Inserisci la email<br>";
+			if (password.isBlank())
+				errors+="Inserisci la password<br>";
+			else if(password.length()<8)
+				errors+="La password deve essere lunga almeno 8 caratteri";
+			
+			if (errors.isEmpty()) {
+				usernameValid=check.checkUsername(username);
+				emailValid=check.checkEmail(email);
+				
+				if (!usernameValid)
+					errors+="Questa username è già esistente<br>";
+				if (!emailValid)
+					errors+="Questa e-mail è già registrata<br>";
+				
+				if (errors.isEmpty()) {
+					password=toHash(password);
+					ds.insertNewUser(nome, cognome, username, email, password, Integer.parseInt(età), telefoni);
+					response.sendRedirect("login.jsp");
+				}
+			}else {
+				request.setAttribute("errors", errors);
+				dispatcherToSignup.forward(request, response);
+			}
+		} catch (SQLException e) {
+			
+		}
 	}
 
 }

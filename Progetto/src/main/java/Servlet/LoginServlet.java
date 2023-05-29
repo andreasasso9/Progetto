@@ -28,8 +28,6 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 		username=request.getParameter("username");
 		password=request.getParameter("password");
 		
-		password=toHash(password);
-
 		LoginDataSource checkLogin=new LoginDataSource();
 
 		try {
@@ -39,6 +37,8 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 
 			if (password.isBlank())
 				errors+="Inserisci la Password<br>";
+			
+			password=toHash(password);
 
 			if (errors.isEmpty()) {
 				check=checkLogin.checkUser(username, password);
@@ -54,14 +54,13 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 
 					response.sendRedirect("index.jsp");
 				} else {
-					request.setAttribute("notfound", "Username o Password errati");
+					errors+="Username o password errati";
+					request.setAttribute("errors", errors);
 					dispatcher.forward(request, response);
-					return;
 				}
 			} else {
 				request.setAttribute("errors", errors);
 				dispatcher.forward(request, response);
-				return;
 			}
 		} catch (SQLException e) {
 		}
