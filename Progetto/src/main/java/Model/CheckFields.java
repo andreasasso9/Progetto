@@ -54,7 +54,7 @@ public class CheckFields {
 					con.close();
 			}
 		}
-		return x;
+		return !x;
 	}
 	
 	public synchronized boolean checkEmail(String email) throws SQLException {
@@ -85,6 +85,6 @@ public class CheckFields {
 					con.close();
 			}
 		}
-		return x;
+		return !x;
 	}
 }

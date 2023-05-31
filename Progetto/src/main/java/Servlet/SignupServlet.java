@@ -55,18 +55,22 @@ public class SignupServlet extends HttpServlet implements PasswordHash {
 				errors+="La password deve essere lunga almeno 8 caratteri";
 
 			if (errors.isEmpty()) {
-			/*	usernameValid=check.checkUsername(username);
+				usernameValid=check.checkUsername(username);
 				emailValid=check.checkEmail(email);
 
 				if (!usernameValid)
 					errors+="Questa username è già esistente<br>";
 				if (!emailValid)
-					errors+="Questa e-mail è già registrata<br>";*/
+					errors+="Questa e-mail è già registrata<br>";
 
 				if (errors.isEmpty()) {
 					password=toHash(password);
 					ds.insertNewUser(nome, cognome, username, email, password, Integer.parseInt(età), telefoni);
 					response.sendRedirect("login.jsp");
+					return;
+				}else {
+					request.setAttribute("errors", errors);
+					dispatcherToSignup.forward(request, response);
 					return;
 				}
 			}else {
@@ -74,13 +78,6 @@ public class SignupServlet extends HttpServlet implements PasswordHash {
 				dispatcherToSignup.forward(request, response);
 				return;
 			}
-		}catch (SQLIntegrityConstraintViolationException e) {
-			errors+="Questa username è già esistente<br>";
-			errors+="Questa e-mail è già registrata<br>";
-
-			request.setAttribute("errors", errors);
-			dispatcherToSignup.forward(request, response);
-			return;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
