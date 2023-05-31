@@ -24,11 +24,11 @@ public class SignupDataSource {
 		}
 	}
 	
-	public synchronized void insertNewUser(String nome, String cognome, String username, String email, String password, int età, String... telefoni) throws SQLException {
+	public synchronized void insertNewUser(String nome, String cognome, String username, String email, String password, int età, String[] telefoni) throws SQLException {
 		Connection con=null;
 		PreparedStatement psUser=null, psTel=null;
 		
-		String userQuery="INSERT INTO utente(username, email, password, nome, cognome, età) VALUES(?,?,?,?,?,?)";
+		String userQuery="INSERT INTO utente(username, email, pass, nome, cognome, età) VALUES(?,?,?,?,?,?)";
 		String telQuery="INSERT INTO telefono(num, username) VALUES(?,?)";
 		
 		try {

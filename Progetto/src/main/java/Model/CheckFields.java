@@ -29,6 +29,7 @@ public class CheckFields {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
+		boolean x;
 		
 		String query="SELECT username FROM utente WHERE username=?";
 		
@@ -40,7 +41,7 @@ public class CheckFields {
 			
 			rs=ps.executeQuery();
 			
-			return rs.next();//ritorna true se ha trovato l'utente, false se username non esiste
+			x=rs.next();//ritorna true se ha trovato l'utente, false se username non esiste
 			
 		} finally {
 			try {
@@ -53,12 +54,14 @@ public class CheckFields {
 					con.close();
 			}
 		}
+		return x;
 	}
 	
 	public synchronized boolean checkEmail(String email) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
+		boolean x;
 		
 		String query="SELECT email FROM utente WHERE email=?";
 		
@@ -69,8 +72,7 @@ public class CheckFields {
 			ps.setString(1, email);
 			
 			rs=ps.executeQuery();
-			
-			return rs.next();//ritorna true se ha trovato l'utente, false se email non esiste
+			x=rs.next();//ritorna true se ha trovato l'utente, false se email non esiste
 			
 		} finally {
 			try {
@@ -83,5 +85,6 @@ public class CheckFields {
 					con.close();
 			}
 		}
+		return x;
 	}
 }

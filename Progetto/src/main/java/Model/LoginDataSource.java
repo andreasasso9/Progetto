@@ -30,7 +30,7 @@ public class LoginDataSource {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		
-		String query="SELECT username, password FROM utente WHERE username=? and password=?";
+		String query="SELECT username, pass FROM utente WHERE username=? and pass=?";
 		
 		try {
 			con=ds.getConnection();

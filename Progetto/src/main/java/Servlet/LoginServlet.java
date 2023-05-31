@@ -38,9 +38,8 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 			if (password.isBlank())
 				errors+="Inserisci la Password<br>";
 			
-			password=toHash(password);
-
 			if (errors.isEmpty()) {
+				password=toHash(password);
 				check=checkLogin.checkUser(username, password);
 
 				if (check) {
@@ -57,12 +56,15 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 					errors+="Username o password errati";
 					request.setAttribute("errors", errors);
 					dispatcher.forward(request, response);
+					return;
 				}
 			} else {
 				request.setAttribute("errors", errors);
 				dispatcher.forward(request, response);
+				return;
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 	}
