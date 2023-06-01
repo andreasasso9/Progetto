@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.LoginDataSource;
-import Model.PasswordHash;
+import Model.StringFunctions;
 
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/Login")
-public class LoginServlet extends HttpServlet implements PasswordHash{
+public class LoginServlet extends HttpServlet implements StringFunctions{
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 						oldSession.invalidate();
 
 					HttpSession currentSession=request.getSession();
+					username=filter(username);
 					currentSession.setAttribute("user", username);
 					
 					currentSession.setAttribute("isLogged", true);

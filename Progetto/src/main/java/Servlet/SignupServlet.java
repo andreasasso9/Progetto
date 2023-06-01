@@ -2,7 +2,6 @@ package Servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.CheckFields;
-import Model.PasswordHash;
 import Model.SignupDataSource;
+import Model.StringFunctions;
 
 
 @WebServlet(name = "SignupServlet", urlPatterns = "/Signup")
-public class SignupServlet extends HttpServlet implements PasswordHash {
+public class SignupServlet extends HttpServlet implements StringFunctions {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

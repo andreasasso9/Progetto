@@ -12,7 +12,7 @@
 	<%
 		Boolean isLogged=(Boolean) session.getAttribute("isLogged");
 		String user=(String) session.getAttribute("user");
-		if (isLogged==null || isLogged==false){
+		if (isLogged==null || !isLogged){
 	%>
 		<h1>Welcome user</h1>
 	<%}else{%>
@@ -22,8 +22,9 @@
 	<%
 		if (isLogged!=null && isLogged){%>
 			<form action="Logout" method="post"><input type="submit" value="Log out"></form>
-		<%} else { %>
-	<a href="login.jsp">Log in</a>
-	<a href="signup.jsp">Sign up</a><%} %>
+		<%}else{ %>
+			<a href="login.jsp">Log in</a>
+			<a href="signup.jsp">Sign up</a>
+		<%} %>
 </body>
 </html>
