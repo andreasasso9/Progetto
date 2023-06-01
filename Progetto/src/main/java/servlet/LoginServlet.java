@@ -1,4 +1,4 @@
-package Servlet;
+package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.LoginDataSource;
-import Model.StringFunctions;
+import model.LoginDataSource;
+import model.StringFunctions;
 
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/Login")

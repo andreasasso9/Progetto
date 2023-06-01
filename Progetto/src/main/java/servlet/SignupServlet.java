@@ -1,4 +1,4 @@
-package Servlet;
+package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.CheckFields;
-import Model.SignupDataSource;
-import Model.StringFunctions;
+import model.CheckFields;
+import model.SignupDataSource;
+import model.StringFunctions;
 
 
 @WebServlet(name = "SignupServlet", urlPatterns = "/Signup")
