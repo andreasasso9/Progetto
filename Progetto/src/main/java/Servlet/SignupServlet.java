@@ -66,7 +66,7 @@ public class SignupServlet extends HttpServlet implements PasswordHash {
 				if (errors.isEmpty()) {
 					password=toHash(password);
 					ds.insertNewUser(nome, cognome, username, email, password, Integer.parseInt(età), telefoni);
-					response.sendRedirect("login.jsp");
+					response.sendRedirect(request.getContextPath()+"/login.jsp");
 					return;
 				}else {
 					request.setAttribute("errors", errors);

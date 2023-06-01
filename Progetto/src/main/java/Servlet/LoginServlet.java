@@ -50,8 +50,10 @@ public class LoginServlet extends HttpServlet implements PasswordHash{
 
 					HttpSession currentSession=request.getSession();
 					currentSession.setAttribute("user", username);
+					
+					currentSession.setAttribute("isLogged", true);
 
-					response.sendRedirect("index.jsp");
+					response.sendRedirect(request.getContextPath()+"/index.jsp");
 				} else {
 					errors+="Username o password errati";
 					request.setAttribute("errors", errors);

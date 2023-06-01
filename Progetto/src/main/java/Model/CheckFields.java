@@ -41,7 +41,7 @@ public class CheckFields {
 			
 			rs=ps.executeQuery();
 			
-			x=rs.next();//ritorna true se ha trovato l'utente, false se username non esiste
+			x=rs.next();//restituisce true se ha trovato l'utente, false se username non esiste
 			
 		} finally {
 			try {
@@ -72,7 +72,7 @@ public class CheckFields {
 			ps.setString(1, email);
 			
 			rs=ps.executeQuery();
-			x=rs.next();//ritorna true se ha trovato l'utente, false se email non esiste
+			x=rs.next();//restituisce true se ha trovato l'utente, false se email non esiste
 			
 		} finally {
 			try {
