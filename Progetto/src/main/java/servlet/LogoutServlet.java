@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "LogoutServlet", urlPatterns = "/Logout")
+@WebServlet(name = "LogoutServlet", urlPatterns = "/common/Logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class LogoutServlet extends HttpServlet {
 		session.setAttribute("isLogged", false);
 		session.invalidate();
 		
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
+		response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 	}
 
 }

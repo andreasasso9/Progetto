@@ -23,8 +23,8 @@
 		if (isLogged!=null && isLogged){%>
 			<form action="Logout" method="post"><input type="submit" value="Log out"></form>
 		<%}else{ %>
-			<a href="login.jsp">Log in</a>
-			<a href="signup.jsp">Sign up</a>
+			<a href="<%=request.getContextPath()%>/common/login.jsp">Log in</a>
+			<a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up</a>
 		<%} %>
 </body>
 </html>

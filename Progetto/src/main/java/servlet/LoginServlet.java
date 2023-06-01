@@ -14,7 +14,7 @@ import model.LoginDataSource;
 import model.StringFunctions;
 
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/Login")
+@WebServlet(name = "LoginServlet", urlPatterns = "/common/Login")
 public class LoginServlet extends HttpServlet implements StringFunctions{
 	private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet implements StringFunctions{
 					
 					currentSession.setAttribute("isLogged", true);
 
-					response.sendRedirect(request.getContextPath()+"/index.jsp");
+					response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 				} else {
 					errors+="Username o password errati";
 					request.setAttribute("errors", errors);

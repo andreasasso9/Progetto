@@ -15,7 +15,7 @@ import model.SignupDataSource;
 import model.StringFunctions;
 
 
-@WebServlet(name = "SignupServlet", urlPatterns = "/Signup")
+@WebServlet(name = "SignupServlet", urlPatterns = "/common/Signup")
 public class SignupServlet extends HttpServlet implements StringFunctions {
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class SignupServlet extends HttpServlet implements StringFunctions {
 				if (errors.isEmpty()) {
 					password=toHash(password);
 					ds.insertNewUser(nome, cognome, username, email, password, Integer.parseInt(età), telefoni);
-					response.sendRedirect(request.getContextPath()+"/login.jsp");
+					response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 					return;
 				}else {
 					request.setAttribute("errors", errors);

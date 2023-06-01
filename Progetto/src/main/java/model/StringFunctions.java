@@ -21,7 +21,7 @@ public interface StringFunctions {
 	}
 
 	public default String filter(String s) {
-		StringBuffer filtered=new StringBuffer(s.length());
+		StringBuilder filtered=new StringBuilder(s.length());
 		char c;
 
 		for (int i=0; i<s.length(); i++) {
