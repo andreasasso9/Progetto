@@ -66,17 +66,10 @@ public class SignupServlet extends HttpServlet implements StringFunctions {
 					password=toHash(password);
 					ds.insertNewUser(nome, cognome, username, email, password, Integer.parseInt(età), telefoni);
 					response.sendRedirect(request.getContextPath()+"/common/index.jsp");
-					return;
-				}else {
-					request.setAttribute("errors", errors);
-					dispatcherToSignup.forward(request, response);
-					return;
 				}
-			}else {
-				request.setAttribute("errors", errors);
-				dispatcherToSignup.forward(request, response);
-				return;
 			}
+			request.setAttribute("errors", errors);
+			dispatcherToSignup.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
