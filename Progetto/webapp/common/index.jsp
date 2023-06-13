@@ -10,21 +10,23 @@
 <body>
 
 	<%
-		Boolean isLogged=(Boolean) session.getAttribute("isLogged");
 		String user=(String) session.getAttribute("user");
-		if (isLogged==null || !isLogged){
+		if (user==null){
 	%>
-		<h1>Welcome user</h1>
-	<%}else{%>
-		<h1>Welcome <%=user%></h1>
+			<h1>Welcome user</h1>
+		
+			<a href="<%=request.getContextPath()%>/common/login.jsp">Log in</a>
+			<a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up</a>
+	<%	}else{%>
+			<h1>Welcome <%=user%></h1>
+			<form action="Logout" method="post"><input type="submit" value="Log out"></form>
 	<%}%>
 	
 	<%
-		if (isLogged!=null && isLogged){%>
-			<form action="Logout" method="post"><input type="submit" value="Log out"></form>
-		<%}else{ %>
-			<a href="<%=request.getContextPath()%>/common/login.jsp">Log in</a>
-			<a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up</a>
-		<%} %>
+		Boolean isAdmin=(Boolean) session.getAttribute("isAdmin");
+	
+		if (isAdmin!=null && isAdmin){%>
+			<a href="<%=request.getContextPath()%>/admin/reserved.jsp">Admin</a><%} %>
+	
 </body>
 </html>

@@ -43,28 +43,23 @@ public class LoginServlet extends HttpServlet implements StringFunctions{
 				check=checkLogin.checkUser(username, password);
 
 				if (check) {
-					HttpSession oldSession=request.getSession(false);
-
-					if (oldSession!=null)
-						oldSession.invalidate();
-
-					HttpSession currentSession=request.getSession();
-					username=filter(username);
-					currentSession.setAttribute("user", username);
+					HttpSession session=request.getSession();
 					
-					currentSession.setAttribute("isLogged", true);
-
+					String admin=request.getServletContext().getInitParameter("admin");
+					session.setAttribute("isAdmin", username.equals(admin));
+					
+					username=filter(username);
+					session.setAttribute("user", username);
+					
 					response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 				} else {
 					errors+="Username o password errati";
 					request.setAttribute("errors", errors);
 					dispatcher.forward(request, response);
-					return;
 				}
 			} else {
 				request.setAttribute("errors", errors);
 				dispatcher.forward(request, response);
-				return;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

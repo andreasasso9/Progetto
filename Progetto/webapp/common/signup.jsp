@@ -33,8 +33,8 @@
 		<%
 			String errors=(String) request.getAttribute("errors");
 		
-			if (errors!=null)%>
-				<%=errors %>
+			if (errors!=null){%>
+				<%=errors %><%} %>
 	</form>
 </body>
 </html>
