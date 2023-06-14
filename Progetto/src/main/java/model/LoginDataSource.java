@@ -40,9 +40,8 @@ public class LoginDataSource {
 			ps.setString(2, password);
 			
 			rs=ps.executeQuery();
-			
 			return rs.next();//restituisce true se ha trovato l'utente, false se username o password sono errati o l'utente non esiste
-			
+
 		} finally {
 			try {
 				if (ps!=null)

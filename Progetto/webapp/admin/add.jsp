@@ -9,10 +9,11 @@
 <body>
 	<form action="LoadFile" method="post" enctype="multipart/form-data"><br>
 		<input type="text" name="nome" placeholder="Nome"><br>
-		<input type="number" min="36" max="44" name="taglia" placeholder="Taglia"><br>
-		<input type="number" name="costo" placeholder="Prezzo"><br>
+		<input type="number" name="taglia" min="36" max="44" placeholder="Taglia"><br>
+		<input type="number" name="prezzo" placeholder="Prezzo"><br>
 		<label>Inserisci file</label>
-		<input type="file" name="foto">
+		<input type="file" name="foto"><br>
+		<input type="submit">
 	</form>
 </body>
 </html>

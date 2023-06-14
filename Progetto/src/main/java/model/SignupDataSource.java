@@ -33,6 +33,8 @@ public class SignupDataSource {
 		
 		try {
 			con=ds.getConnection();
+			con.setAutoCommit(false);
+			
 			psUser=con.prepareStatement(userQuery);
 			
 			
@@ -51,6 +53,7 @@ public class SignupDataSource {
 				psTel.setString(1, s);
 				
 				System.out.println("tel insert: "+ psTel.executeUpdate());
+				con.commit();
 			}
 			
 		} finally {

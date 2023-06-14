@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
 import DTO.Scarpa;
 
 public class ScarpaDataSource implements IBeanDAO<Scarpa> {
@@ -22,68 +24,72 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
 			ds = (DataSource) envCtx.lookup("jdbc/progetto");
-
+			
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
 
 	@Override
-	public synchronized void doSave(Scarpa product) throws SQLException {
+	public synchronized boolean doSave(Scarpa scarpa) throws SQLException {
 
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		String insertSQL = "INSERT INTO scarpa VALUES (nome, taglia, costo, foto) VALUES (?, ?, ?, ?)";
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String insertSQL = "INSERT INTO scarpa (nome, taglia, prezzo, foto) VALUES (?, ?, ?, ?)";
 				
 		try {
-			connection = ds.getConnection();
+			con = ds.getConnection();
+			con.setAutoCommit(false);
 			
-			preparedStatement=connection.prepareStatement(insertSQL);
+			ps=con.prepareStatement(insertSQL);
 			
-			preparedStatement.setString(1, product.getNome());
-			preparedStatement.setInt(2, product.getTaglia());
-			preparedStatement.setDouble(3, product.getCosto());
-			preparedStatement.setByte(4, product.getFoto());
+			ps.setString(1, scarpa.getNome());
+			ps.setInt(2, scarpa.getTaglia());
+			ps.setDouble(3, scarpa.getPrezzo());
+			ps.setBinaryStream(4, scarpa.getFoto());
 
-			preparedStatement.executeUpdate();
-
-			connection.commit();
-		} finally {
+			ps.executeUpdate();
+			con.commit();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
+				if (ps != null)
+					ps.close();
 			} finally {
-				if (connection != null)
-					connection.close();
+				if (con != null)
+					con.close();
 			}
 		}
+		return true;
 	}
 
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+	public synchronized boolean doDelete(String nome) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 
 		int result = 0;
 		
-		String deleteSQL = "DELETE FROM scarpa WHERE codice = ?";
+		String deleteSQL = "DELETE FROM scarpa WHERE nome = ?";
 		
 		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(deleteSQL);
+			con = ds.getConnection();
+			ps = con.prepareStatement(deleteSQL);
 			
-			preparedStatement.setInt(1, code);
+			ps.setString(1, nome);
 
-			result = preparedStatement.executeUpdate();
+			result = ps.executeUpdate();
 
 		} finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
+				if (ps != null)
+					ps.close();
 			} finally {
-				if (connection != null)
-					connection.close();
+				if (con != null)
+					con.close();
 			}
 		}
 		return (result != 0);
@@ -91,8 +97,8 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 
 	@Override
 	public synchronized Collection<Scarpa> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+		Connection con = null;
+		PreparedStatement ps = null;
 
 		Collection<Scarpa> products = new LinkedList<>();
 
@@ -103,31 +109,31 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 		}
 
 		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
+			con = ds.getConnection();
+			ps = con.prepareStatement(selectSQL);
 			
-			preparedStatement.setString(1, order);
+			ps.setString(1, order);
 
-			ResultSet rs = preparedStatement.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Scarpa scarpa = new Scarpa();
-
+				
 				scarpa.setNome(rs.getString("nome"));
-				scarpa.setCosto(rs.getDouble("costo"));
+				scarpa.setPrezzo(rs.getDouble("costo"));
 				scarpa.setTaglia(rs.getInt("taglia"));
-				scarpa.setFoto(rs.getByte("foto"));
+				scarpa.setFoto(rs.getBinaryStream("foto"));
 				
 				products.add(scarpa);
 			}
 
 		} finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
+				if (ps != null)
+					ps.close();
 			} finally {
-				if (connection != null)
-					connection.close();
+				if (con != null)
+					con.close();
 			}
 		}
 		return products;
@@ -147,9 +153,9 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				scarpa.setNome(rs.getString("nome"));
-				scarpa.setCosto(rs.getDouble("costo"));
+				scarpa.setPrezzo(rs.getDouble("costo"));
 				scarpa.setTaglia(rs.getInt("taglia"));
-				scarpa.setFoto(rs.getByte("foto"));
+				scarpa.setFoto(rs.getBinaryStream("foto"));
 			}
 		} finally {
 			try {

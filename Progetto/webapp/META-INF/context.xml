@@ -4,7 +4,8 @@
         auth="Container"
         driverClassName="com.mysql.cj.jdbc.Driver"
         type="javax.sql.DataSource"
-        username="root"
-        password="andreasassO9"
+        username="admin"
+        password="anno2002"
+        autocommit="false"
         url="jdbc:mysql://localhost:3306/progetto?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
 </Context>
