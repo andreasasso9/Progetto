@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet implements StringFunctions{
 
 				if (check) {
 					HttpSession session=request.getSession();
-					
 					String admin=request.getServletContext().getInitParameter("admin");
 					session.setAttribute("isAdmin", username.equals(admin));
 					

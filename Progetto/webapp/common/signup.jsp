@@ -7,25 +7,25 @@
 <body>
 	<form action="Signup" method="post">
 		<label for="nome">Nome: </label>
-		<input type="text" name="nome" placeholder="Nome" id="nome">
+		<input type="text" name="nome" placeholder="Nome" id="nome"><br>
 		
 		<label for="Cognome">Cognome: </label>
-		<input type="text" name="cognome" placeholder="Cognome" id="cognome">
+		<input type="text" name="cognome" placeholder="Cognome" id="cognome"><br>
 		
 		<label for="età">Età: </label>
-		<input type="number" name="età" placeholder="età" id="età">
+		<input type="number" name="età" placeholder="età" id="età"><br>
 		
 		<label for="telefono">Telefono: </label>
-		<input type="tel" name="telefono" placeholder="Telefono" id="telefono">
+		<input type="tel" name="telefono" placeholder="Telefono" id="telefono"><br>
 		
 		<label for="username">Username: </label>
-		<input type="text" name="username" placeholder="username" id="username">
+		<input type="text" name="username" placeholder="username" id="username"><br>
 		
 		<label for="email">E-mail: </label>
-		<input type="email" name="email" placeholder="E-mail" id="email">
+		<input type="email" name="email" placeholder="E-mail" id="email"><br>
 		
 		<label for="password">Password: </label>
-		<input type="password" name="password" placeholder="password" id="password">
+		<input type="password" name="password" placeholder="password" id="password"><br>
 		
 		<input type="submit">
 		<input type="reset">

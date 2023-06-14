@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Pagina riservata all'admin</h1>
+	<a href="add.jsp">Inserisci un prodotto</a>
 </body>
 </html>
