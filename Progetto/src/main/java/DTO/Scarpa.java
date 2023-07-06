@@ -1,6 +1,5 @@
 package DTO;
 
-import java.io.InputStream;
 import java.io.Serializable;
 
 public class Scarpa implements Serializable{
@@ -10,13 +9,13 @@ public class Scarpa implements Serializable{
 	private String nome;
 	private int taglia;
 	private double prezzo;
-	private InputStream foto;
+	private int id;
 	
 	public Scarpa() {
 		nome="";
 		taglia=-1;
 		prezzo=-1;
-		foto=null;
+		id=-1;
 	}
 
 	public String getNome() {
@@ -43,15 +42,12 @@ public class Scarpa implements Serializable{
 		this.prezzo = prezzo;
 	}
 
-	public InputStream getFoto() {
-		return foto;
+	public int getId() {
+		return id;
 	}
 
-	public void setFoto(InputStream foto) {
-		this.foto = foto;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	
-
 	
 }

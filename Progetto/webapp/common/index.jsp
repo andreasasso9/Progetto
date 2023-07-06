@@ -1,3 +1,8 @@
+<%@page import="java.io.BufferedInputStream"%>
+<%@page import="java.util.Collection"%>
+<%@page import="DTO.Scarpa"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.ScarpaDataSource"%>
 <%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -27,6 +32,6 @@
 	
 		if (isAdmin!=null && isAdmin){%>
 			<a href="<%=request.getContextPath()%>/admin/reserved.jsp">Admin</a><%} %>
-	
+			
 </body>
 </html>

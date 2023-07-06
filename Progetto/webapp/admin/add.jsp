@@ -13,7 +13,7 @@
 		<input type="number" name="prezzo" placeholder="Prezzo"><br>
 		<label>Inserisci file</label>
 		<input type="file" name="foto"><br>
-		<input type="submit">
+		<input type="submit"> <input type="reset">
 	</form>
 </body>
 </html>

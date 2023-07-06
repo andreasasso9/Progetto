@@ -47,7 +47,6 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			ps.setString(1, scarpa.getNome());
 			ps.setInt(2, scarpa.getTaglia());
 			ps.setDouble(3, scarpa.getPrezzo());
-			ps.setBinaryStream(4, scarpa.getFoto());
 
 			ps.executeUpdate();
 			con.commit();
@@ -67,19 +66,19 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 	}
 
 	@Override
-	public synchronized boolean doDelete(String nome) throws SQLException {
+	public synchronized boolean doDelete(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		int result = 0;
 		
-		String deleteSQL = "DELETE FROM scarpa WHERE nome = ?";
+		String deleteSQL = "DELETE FROM scarpa WHERE id = ?";
 		
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(deleteSQL);
 			
-			ps.setString(1, nome);
+			ps.setInt(1, Integer.parseInt(id));
 
 			result = ps.executeUpdate();
 
@@ -96,7 +95,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 	}
 
 	@Override
-	public synchronized Collection<Scarpa> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<Scarpa> doRetrieveAll() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 
@@ -104,25 +103,20 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 
 		String selectSQL=null;
 
-		if (order != null && !order.equals("")) {
-			selectSQL = "SELECT * FROM scarpa ORDER BY ?";
-		}
+		selectSQL = "SELECT * FROM scarpa";
 
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(selectSQL);
 			
-			ps.setString(1, order);
-
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Scarpa scarpa = new Scarpa();
 				
 				scarpa.setNome(rs.getString("nome"));
-				scarpa.setPrezzo(rs.getDouble("costo"));
+				scarpa.setPrezzo(rs.getDouble("prezzo"));
 				scarpa.setTaglia(rs.getInt("taglia"));
-				scarpa.setFoto(rs.getBinaryStream("foto"));
 				
 				products.add(scarpa);
 			}
@@ -153,9 +147,8 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				scarpa.setNome(rs.getString("nome"));
-				scarpa.setPrezzo(rs.getDouble("costo"));
+				scarpa.setPrezzo(rs.getDouble("prezzo"));
 				scarpa.setTaglia(rs.getInt("taglia"));
-				scarpa.setFoto(rs.getBinaryStream("foto"));
 			}
 		} finally {
 			try {

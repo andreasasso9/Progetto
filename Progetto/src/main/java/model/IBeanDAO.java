@@ -9,5 +9,5 @@ public interface IBeanDAO<T> {
 
 	public T doRetrieveByKey(String code) throws SQLException;
 	
-	public Collection<T> doRetrieveAll(String order) throws SQLException;
+	public Collection<T> doRetrieveAll() throws SQLException;
 }
