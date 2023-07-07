@@ -1,5 +1,7 @@
 package control;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,5 +66,33 @@ public class FotoControl {
 			}
 		}
 		return bt;
+	}
+	
+	public static synchronized void updatePhoto(String idA, InputStream photo) 
+			throws SQLException {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			con = ds.getConnection();
+			stmt = con.prepareStatement("UPDATE scarpa SET foto = ? WHERE id = ?");
+			try {
+				stmt.setBinaryStream(1, photo, photo.available());
+				stmt.setString(2, idA);	
+				stmt.executeUpdate();
+				con.commit();
+			} catch (IOException e) {
+				System.out.println(e);
+			}
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException sqlException) {
+				System.out.println(sqlException);
+			} finally {
+				if (con != null)
+					con.close();
+			}
+		}
 	}
 }

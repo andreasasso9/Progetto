@@ -36,7 +36,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String insertSQL = "INSERT INTO scarpa (nome, taglia, prezzo, foto) VALUES (?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO scarpa (nome, taglia, prezzo) VALUES (?, ?, ?)";
 				
 		try {
 			con = ds.getConnection();
@@ -114,6 +114,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			while (rs.next()) {
 				Scarpa scarpa = new Scarpa();
 				
+				scarpa.setId(rs.getInt("id"));
 				scarpa.setNome(rs.getString("nome"));
 				scarpa.setPrezzo(rs.getDouble("prezzo"));
 				scarpa.setTaglia(rs.getInt("taglia"));
