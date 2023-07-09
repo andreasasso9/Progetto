@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%request.getSession().invalidate(); %>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
@@ -14,6 +13,7 @@
 		<input type="password" name="password" placeholder="Password" id="password"><br>
 		<input type="submit" value="Log in">
 	</form>
+	<a href="signup.jsp">Crea un nuovo account</a>
 	<%
 		String errors=(String) request.getAttribute("errors");
 		

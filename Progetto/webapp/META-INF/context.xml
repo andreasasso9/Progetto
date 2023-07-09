@@ -6,6 +6,5 @@
         type="javax.sql.DataSource"
         username="admin"
         password="anno2002"
-        autocommit="false"
         url="jdbc:mysql://localhost:3306/progetto?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
 </Context>

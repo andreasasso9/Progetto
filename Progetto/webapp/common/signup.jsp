@@ -29,12 +29,13 @@
 		
 		<input type="submit">
 		<input type="reset">
-		
+	</form>
+	
+	<a href="login.jsp">Effettua il login</a>
 		<%
 			String errors=(String) request.getAttribute("errors");
 		
 			if (errors!=null){%>
 				<%=errors %><%} %>
-	</form>
 </body>
 </html>

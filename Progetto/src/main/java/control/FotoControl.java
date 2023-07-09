@@ -79,7 +79,6 @@ public class FotoControl {
 				stmt.setBinaryStream(1, photo, photo.available());
 				stmt.setString(2, idA);	
 				stmt.executeUpdate();
-				con.commit();
 			} catch (IOException e) {
 				System.out.println(e);
 			}

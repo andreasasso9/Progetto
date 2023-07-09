@@ -4,11 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%
-	Collection<?> scarpe=(Collection<?>) request.getAttribute("scarpe");
-	if (scarpe==null){
-		request.getRequestDispatcher("/admin/UploadScarpeAttributeServlet").forward(request, response);
-		return;
-	}
+	Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe");
 %>
 	
 <!DOCTYPE html>
@@ -25,8 +21,8 @@
 	%>
 	<h1>Welcome user</h1>
 
-	<a href="<%=request.getContextPath()%>/common/login.jsp">Log in</a>
-	<a href="<%=request.getContextPath()%>/common/signup.jsp">Sign up</a>
+	<a href="<%=request.getContextPath() %>/common/login.jsp">Log in</a>
+	<a href="<%=request.getContextPath() %>/common/signup.jsp">Sign up</a>
 	<%	}else{%>
 	<h1>
 		Welcome

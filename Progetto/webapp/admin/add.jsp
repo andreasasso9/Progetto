@@ -1,5 +1,11 @@
+<%@page import="DTO.Scarpa"%>
+<%@page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.Collection" %>
+<%
+	Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe");
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -7,23 +13,36 @@
 <title>Add</title>
 </head>
 <body>
-	<fieldset name="Aggiungi una scarpa">
-		<form action="AddScarpaServlet" method="post" enctype="multipart/form-data"><br>
+	<fieldset>
+		<legend>Aggiungi una scarpa</legend>
+		<form action="AddScarpaServlet" method="post"><br>
 			<input type="text" name="nome" placeholder="Nome"><br>
 			<input type="number" name="taglia" min="36" max="50" placeholder="Taglia"><br>
 			<input type="number" name="prezzo" placeholder="Prezzo"><br>
-			<label>Inserisci file</label>
-			<input type="file" name="foto"><br>
 			<input type="submit"> <input type="reset">
 		</form>
 	</fieldset>
 	
-	<fieldset name="Aggiungi la foto">
-		<select>
+	<fieldset>
+	<legend>Aggiungi una foto</legend>
+		<form action="UploadFotoServlet" method="post" enctype="multipart/form-data">
+			<select name="id">
 			<%
-				
+				if (scarpe != null && scarpe.size()>0){
+					Iterator<?> it=scarpe.iterator();
+					while (it.hasNext()){
+						Scarpa s=(Scarpa) it.next();
 			%>
-		</select>
+						<option value="<%=s.getId() %>"><%=s.getNome() %></option>
+			<%
+					}
+				}
+			%>
+			</select>
+			<br>
+			<input type="file" name="foto" value="Inserisci una foto">
+			<input type="submit" value="Upload"><input type="reset" value="Reset">
+		</form>
 	</fieldset>
 </body>
 </html>
