@@ -44,7 +44,7 @@ public class FotoControl {
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				bt = rs.getBytes("photo");
+				bt = rs.getBytes("foto");
 			}
 
 		} catch (SQLException sqlException) {

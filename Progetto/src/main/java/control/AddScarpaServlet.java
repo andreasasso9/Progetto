@@ -18,12 +18,10 @@ public class AddScarpaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome=request.getParameter("nome");
-		int taglia=Integer.parseInt(request.getParameter("taglia"));
 		double prezzo=Double.parseDouble(request.getParameter("prezzo"));
 		
 		Scarpa scarpa=new Scarpa();
 		scarpa.setNome(nome);
-		scarpa.setTaglia(taglia);
 		scarpa.setPrezzo(prezzo);
 		
 		ScarpaDataSource ds=new ScarpaDataSource();

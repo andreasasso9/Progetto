@@ -36,7 +36,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String insertSQL = "INSERT INTO scarpa (nome, taglia, prezzo) VALUES (?, ?, ?)";
+		String insertSQL = "INSERT INTO scarpa (nome, prezzo) VALUES (?, ?)";
 				
 		try {
 			con = ds.getConnection();
@@ -45,8 +45,7 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			ps=con.prepareStatement(insertSQL);
 			
 			ps.setString(1, scarpa.getNome());
-			ps.setInt(2, scarpa.getTaglia());
-			ps.setDouble(3, scarpa.getPrezzo());
+			ps.setDouble(2, scarpa.getPrezzo());
 
 			ps.executeUpdate();
 			con.commit();
@@ -117,7 +116,6 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 				scarpa.setId(rs.getInt("id"));
 				scarpa.setNome(rs.getString("nome"));
 				scarpa.setPrezzo(rs.getDouble("prezzo"));
-				scarpa.setTaglia(rs.getInt("taglia"));
 				
 				products.add(scarpa);
 			}
@@ -135,21 +133,20 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 	}
 	
 	@Override
-	public synchronized Scarpa doRetrieveByKey(String nome) throws SQLException {
+	public synchronized Scarpa doRetrieveByKey(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		Scarpa scarpa = new Scarpa();
-		String selectSQL = "SELECT * FROM scarpa WHERE CODE = ?";
+		String selectSQL = "SELECT * FROM scarpa WHERE id = ?";
 		
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, nome);
+			preparedStatement.setString(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				scarpa.setNome(rs.getString("nome"));
 				scarpa.setPrezzo(rs.getDouble("prezzo"));
-				scarpa.setTaglia(rs.getInt("taglia"));
 			}
 		} finally {
 			try {

@@ -17,7 +17,6 @@
 		<legend>Aggiungi una scarpa</legend>
 		<form action="AddScarpaServlet" method="post"><br>
 			<input type="text" name="nome" placeholder="Nome"><br>
-			<input type="number" name="taglia" min="36" max="50" placeholder="Taglia"><br>
 			<input type="number" name="prezzo" placeholder="Prezzo"><br>
 			<input type="submit"> <input type="reset">
 		</form>
