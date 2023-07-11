@@ -17,4 +17,10 @@ public class LogoutServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 	}
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	
 }

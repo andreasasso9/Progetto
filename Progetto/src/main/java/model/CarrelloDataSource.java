@@ -32,25 +32,36 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 	@Override
 	public boolean doSave(Carrello bean) throws SQLException {
 		Connection con=null;
+		PreparedStatement psEffettua=null;
 		PreparedStatement psCarrello=null;
 		PreparedStatement psHa=null;
 		
-		String sqlCarrello="INSERT INTO ordine(codice) VALUES(?)";
+		String sqlEffettua="INSEERT INTO effettua(username) VALUES(?)";
+		String sqlCarrello="INSERT INTO ordine(username) VALUES(?)";
 		String sqlHa="INSERT INTO ha(codiceScarpa) VALUES(?)";
+		
 		
 		try {
 			con=ds.getConnection();
 			con.setAutoCommit(false);
 			
-			psCarrello=con.prepareStatement(sqlCarrello);
+			psEffettua=con.prepareStatement(sqlEffettua);
+			psEffettua.setString(1, bean.getUsername());
+			psEffettua.executeUpdate();
 			
-			psCarrello.setInt(1, bean.getCodice());
+			psCarrello=con.prepareStatement(sqlCarrello);
+			psCarrello.setString(1, bean.getUsername());
+			psCarrello.executeUpdate();
 			
 			psHa=con.prepareStatement(sqlHa);
-			for (Scarpa s:bean.getScarpe()) 
+			for (Scarpa s:bean.getScarpe()) {
 				psHa.setInt(1, s.getId());
+				psHa.executeUpdate();
+			}
+			con.commit();
 		}catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}finally {
 			try {
 				if (psHa!=null)
@@ -58,7 +69,8 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 				if (psCarrello!=null)
 					psCarrello.close();
 			} finally {
-				con.close();
+				if (con!=null)
+					con.close();
 			}
 		}
 		return true;
@@ -78,7 +90,6 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 	@Override
 	public Collection<Carrello> doRetrieveAll() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

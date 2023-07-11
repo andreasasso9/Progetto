@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%
+	String user=(String) session.getAttribute("user");
 	Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe");
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
 	if (carrello==null){
@@ -24,20 +25,19 @@
 <body>
 	<div class="user">
 		<%
-		String user=(String) session.getAttribute("user");
 		if (user==null){
 		%>
 		<h1>Welcome user</h1>
-		<h2>Carrello: <%=carrello.getScarpe().size() %></h2>
 		
 		<a href="<%=request.getContextPath() %>/common/login.jsp">Log in</a>
 		<a href="<%=request.getContextPath() %>/common/signup.jsp">Sign up</a>
-		<%}else{%>
-		<h1>Welcome <%=user%></h1>
-		<h2>Carrello: <%=carrello.getScarpe().size() %></h2>
-		<form action="Logout" method="post">
-			<input type="submit" value="Log out">
-		</form>
+		<%}else{ carrello.setUsername(user);%>
+			<h1>Welcome <%=user%></h1>
+			<%if (carrello.getScarpe().size()>0) { %>
+				<h2>Carrello: <%=carrello.getScarpe().size() %></h2><br>
+			<%} %>
+			<a href="Logout">Logout</a>
+			<a href="<%=request.getContextPath() %>/common/carrello.jsp">Vai al carrello</a>
 		<%}%>
 	
 		<%
@@ -45,8 +45,8 @@
 
 		if (isAdmin!=null && isAdmin){%>
 			<a href="<%=request.getContextPath()%>/admin/reserved.jsp">Admin</a>
-		<%} %>
-	</div>
+			<%} %>
+ 	</div> <!-- fine div user -->
 	<div class="foto">
 		<%
 		Iterator<?> it=scarpe.iterator();
@@ -56,12 +56,14 @@
 			byte foto[]=FotoControl.load(s.getId()+"");
 			if (foto!=null){%>
 			<div>
-				<img alt="<%=s.getNome() %>" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>" id="scarpa">
+				<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>" id="scarpa">
 				<label for="scarpa"><%=s.getNome() %></label>
-				<a href="<%=request.getContextPath() %>/common/AggiungiCarrelloServlet?scarpaId=<%=s.getId() %>">Aggiungi al carrello</a>
+				<%if (user!=null) {%>
+					<a href="<%=request.getContextPath() %>/common/AggiungiCarrelloServlet?scarpaId=<%=s.getId() %>">Aggiungi al carrello</a>
+				<%} %>
 			</div>
 			<%}
 		}%>
-	</div>
+	</div> <!-- fine div foto -->
 </body>
 </html>
