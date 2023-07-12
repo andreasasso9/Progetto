@@ -9,11 +9,13 @@ public class Scarpa implements Serializable{
 	private String nome;
 	private double prezzo;
 	private int id;
+	private int taglia;
 	
 	public Scarpa() {
 		nome="";
 		prezzo=-1;
 		id=-1;
+		taglia=-1;
 	}
 
 	public String getNome() {
@@ -38,6 +40,14 @@ public class Scarpa implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getTaglia() {
+		return taglia;
+	}
+
+	public void setTaglia(int taglia) {
+		this.taglia = taglia;
 	}
 	
 }

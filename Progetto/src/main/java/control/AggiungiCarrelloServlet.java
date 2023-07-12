@@ -18,8 +18,9 @@ import model.ScarpaDataSource;
 public class AggiungiCarrelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scarpaId=request.getParameter("scarpaId");
+		int taglia=Integer.parseInt(request.getParameter("taglia"));
 		HttpSession session=request.getSession();
 		
 		Carrello carrello=(Carrello) session.getAttribute("carrello");
@@ -28,6 +29,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 		ScarpaDataSource sds=new ScarpaDataSource();
 		try {
 			Scarpa s= sds.doRetrieveByKey(scarpaId);
+			s.setTaglia(taglia);
 			carrello.getScarpe().add(s);
 			session.setAttribute("carrello", carrello);
 			response.sendRedirect(request.getContextPath()+"/common/index.jsp");

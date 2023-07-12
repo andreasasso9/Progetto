@@ -55,13 +55,22 @@
 			Scarpa s=(Scarpa) it.next();
 			byte foto[]=FotoControl.load(s.getId()+"");
 			if (foto!=null){%>
-			<div>
-				<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>" id="scarpa">
-				<label for="scarpa"><%=s.getNome() %></label>
+			<fieldset>
+			<legend><%=s.getNome() %></legend>
+				<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>"	 id="scarpa">
 				<%if (user!=null) {%>
-					<a href="<%=request.getContextPath() %>/common/AggiungiCarrelloServlet?scarpaId=<%=s.getId() %>">Aggiungi al carrello</a>
+					<form action="AggiungiCarrelloServlet" method="post">
+						<select name="taglia">
+							<%for (int i=38; i<46; i++){%>
+								<option value=<%=i %>><%=i %></option>
+							<%}%>
+						</select>
+						<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">
+						<input type="submit" value="Aggiungi al carrello">
+					</form>
+					<p><%=s.getPrezzo() %></p>
 				<%} %>
-			</div>
+			</fieldset>
 			<%}
 		}%>
 	</div> <!-- fine div foto -->

@@ -17,10 +17,14 @@
 		<h1>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()).sum() %></h1>
 		<%
 		for (Scarpa s:carrello.getScarpe()){%>
-			<label for="scarpa"><%=s.getNome() %> <%=s.getPrezzo() %></label>
+		<fieldset>
+		<legend><%=s.getNome() %></legend>
+			<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %></label><br>
 			<img alt="no image" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>" id="scarpa"><br>
+		</fieldset>	
 		<%} %>
-		<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a>
+		<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a><br>
+		<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a>
 	</div>
 </body>
 </html>
