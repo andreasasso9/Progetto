@@ -38,6 +38,7 @@
 			<%} %>
 			<a href="Logout">Logout</a>
 			<a href="<%=request.getContextPath() %>/common/carrello.jsp">Vai al carrello</a>
+			<a href="<%=request.getContextPath() %>/common/ordini.jsp">Visualizza i tuoi ordini</a>
 		<%}%>
 	
 		<%

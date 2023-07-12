@@ -30,6 +30,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 		try {
 			Scarpa s= sds.doRetrieveByKey(scarpaId);
 			s.setTaglia(taglia);
+			s.setId(Integer.parseInt(scarpaId));
 			carrello.getScarpe().add(s);
 			session.setAttribute("carrello", carrello);
 			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
