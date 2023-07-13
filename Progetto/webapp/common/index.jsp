@@ -36,7 +36,7 @@
 			<%if (carrello.getScarpe().size()>0) { %>
 				<h2>Carrello: <%=carrello.getScarpe().size() %></h2><br>
 			<%} %>
-			<a href="Logout">Logout</a>
+			<a href="<%=request.getContextPath() %>/common/Logout">Logout</a>
 			<a href="<%=request.getContextPath() %>/common/carrello.jsp">Vai al carrello</a>
 			<a href="<%=request.getContextPath() %>/common/ordini.jsp">Visualizza i tuoi ordini</a>
 		<%}%>

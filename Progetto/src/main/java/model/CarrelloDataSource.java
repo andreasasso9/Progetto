@@ -13,7 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import DTO.Carrello;
-import DTO.Scarpa;
+import DTO.ScarpaOrdine;
 
 public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
@@ -38,11 +38,13 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 		PreparedStatement psCarrello=null;
 		PreparedStatement psHa=null;
 		PreparedStatement psCarrelloId=null;
+		PreparedStatement psTaglia=null;
 
 		String sqlEffettua="INSERT INTO effettua(username) VALUES(?)";
 		String sqlCarrello="INSERT INTO ordine(username) VALUES(?)";
 		String sqlHa="INSERT INTO ha(codiceOrdine, codiceScarpa) VALUES(?,?)";
 		String getCarrelloId="SELECT MAX(codice) FROM ordine";
+		String sqlTaglia="INSERT INTO taglia(taglia, codiceScarpa, codiceOrdine) VALUES(?,?,?)";
 
 		try {
 			con=ds.getConnection();
@@ -62,11 +64,18 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 			rs.next();
 			int codiceCarrello=rs.getInt("max(codice)");
 			
+			psTaglia=con.prepareStatement(sqlTaglia);
 			psHa=con.prepareStatement(sqlHa);
+			
+			psTaglia.setInt(3, codiceCarrello);
 			psHa.setInt(1, codiceCarrello);
-			for (Scarpa s:bean.getScarpe()) {
+			for (ScarpaOrdine s:bean.getScarpe()) {
 				psHa.setInt(2, s.getId());
 				psHa.executeUpdate();
+				
+				psTaglia.setInt(1, s.getTaglia());
+				psTaglia.setInt(2, s.getId());
+				psTaglia.executeUpdate();
 			}
 			con.commit();
 		}catch (SQLException e) {
@@ -102,44 +111,55 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 	@Override
 	public Collection<Carrello> doRetrieveAll() throws SQLException {
+		return null;
+	}
+
+	public Collection<Carrello> getOrdini(String username) throws SQLException{
 		Connection con=null;
 		PreparedStatement psOrdine=null;
-		PreparedStatement psHa=null;
+		PreparedStatement psScarpe=null;
+		
 		ResultSet rsOrdine=null;
-		ResultSet rsHa=null;
-
+		ResultSet rsScarpe=null;
+		
 		Collection<Carrello> ordini=new LinkedList<>();
-
-		String sqlOrdine="SELECT * FROM ORDINE";
-		String sqlHa="SELECT codiceScarpa FROM ha WHERE codiceOrdine=?";
-
+		ScarpaDataSource sds=new ScarpaDataSource();
+		
+		String sqlOrdine="SELECT codice FROM ordine WHERE username=?";
+		String sqlScarpe="SELECT DISTINCT(t.codiceScarpa), t.taglia FROM ha, taglia as t WHERE ha.codiceOrdine=? and t.codiceOrdine=ha.codiceOrdine";
 		try {
 			con=ds.getConnection();
-			psHa=con.prepareStatement(sqlHa);
 			psOrdine=con.prepareStatement(sqlOrdine);
-			rsOrdine=psOrdine.executeQuery();
+			psScarpe=con.prepareStatement(sqlScarpe);
 			
+			psOrdine.setString(1, username);
+			
+			rsOrdine=psOrdine.executeQuery();
 			while (rsOrdine.next()) {
-				psHa.setInt(1, rsOrdine.getInt("codice"));
-				rsHa=psHa.executeQuery();
-				Carrello carrello=new Carrello();
-				while (rsHa.next()) {
-					Scarpa s=new Scarpa();
-					s.setId(rsHa.getInt("codiceScarpa"));
-					carrello.getScarpe().add(s);
+				Carrello c=new Carrello();
+				c.setUsername(username);
+				int codiceCarrello=rsOrdine.getInt("codice");
+				c.setCodice(codiceCarrello);
+				
+				psScarpe.setInt(1, codiceCarrello);
+				rsScarpe=psScarpe.executeQuery();
+				while (rsScarpe.next()) {
+					int codiceScarpa=rsScarpe.getInt("codiceScarpa");
+					int taglia=rsScarpe.getInt("taglia");
+					ScarpaOrdine s=new ScarpaOrdine(sds.doRetrieveByKey(codiceScarpa+""));
+					
+					s.setTaglia(taglia);
+					
+					c.getScarpe().add(s);
 				}
-				
-				carrello.setCodice(rsOrdine.getInt("codice"));
-				carrello.setUsername(rsOrdine.getString("username"));
-				
-				ordini.add(carrello);
+				ordini.add(c);
 			}
 		} finally {
 			try {
 				if (psOrdine!=null)
 					psOrdine.close();
-				if (psHa!=null)
-					psHa.close();
+				if (psScarpe!=null)
+					psScarpe.close();
 			}finally {
 				if (con!=null)
 					con.close();
@@ -147,6 +167,5 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 		}
 		return ordini;
 	}
-
 
 }

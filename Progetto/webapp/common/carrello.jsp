@@ -1,9 +1,13 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="DTO.ScarpaOrdine"%>
 <%@page import="DTO.Scarpa"%>
 <%@page import="DTO.Carrello"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 <%
+	if (session.getAttribute("user")==null)
+		response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
 %>
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 	<div id="ordini">
 		<h1>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()).sum() %></h1>
 		<%
-		for (Scarpa s:carrello.getScarpe()){%>
+		for (ScarpaOrdine s:carrello.getScarpe()){%>
 		<fieldset>
 		<legend><%=s.getNome() %></legend>
 			<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %></label><br>

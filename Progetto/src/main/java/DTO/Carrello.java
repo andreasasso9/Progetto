@@ -8,7 +8,7 @@ public class Carrello implements Serializable{
 	private static final long serialVersionUID = 6619739267570890509L;
 	
 	private int codice;
-	private ArrayList<Scarpa> scarpe;
+	private ArrayList<ScarpaOrdine> scarpe;
 	private String username;
 	
 	public Carrello() {
@@ -25,11 +25,11 @@ public class Carrello implements Serializable{
 		this.codice = codice;
 	}
 
-	public ArrayList<Scarpa> getScarpe() {
+	public ArrayList<ScarpaOrdine> getScarpe() {
 		return scarpe;
 	}
 
-	public void setScarpe(ArrayList<Scarpa> scarpe) {
+	public void setScarpe(ArrayList<ScarpaOrdine> scarpe) {
 		this.scarpe = scarpe;
 	}
 

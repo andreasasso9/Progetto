@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DTO.Carrello;
 import DTO.Scarpa;
+import DTO.ScarpaOrdine;
 import model.ScarpaDataSource;
 
 @WebServlet("/common/AggiungiCarrelloServlet")
@@ -29,9 +30,12 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 		ScarpaDataSource sds=new ScarpaDataSource();
 		try {
 			Scarpa s= sds.doRetrieveByKey(scarpaId);
-			s.setTaglia(taglia);
 			s.setId(Integer.parseInt(scarpaId));
-			carrello.getScarpe().add(s);
+			
+			ScarpaOrdine so=new ScarpaOrdine(s);
+			so.setTaglia(taglia);
+			
+			carrello.getScarpe().add(so);
 			session.setAttribute("carrello", carrello);
 			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 		} catch (SQLException e) {
