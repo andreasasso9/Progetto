@@ -56,9 +56,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 			psCarrello=con.prepareStatement(sqlCarrello);
 			psCarrello.setString(1, bean.getUsername());
-			System.out.println(bean.getScarpe());
 			String riepilogo=bean.getScarpe()+"<br>Totale: "+bean.getScarpe().parallelStream().mapToDouble(c->c.getPrezzo()).sum();
-			System.out.println(riepilogo);
 			psCarrello.setString(2, riepilogo);
 			psCarrello.executeUpdate();
 			con.commit();
@@ -115,7 +113,37 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 	@Override
 	public Collection<Carrello> doRetrieveAll() throws SQLException {
-		return null;
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT * FROM ordine";
+		
+		Collection<Carrello> ordini=new LinkedList<>();
+		
+		try {
+			con=ds.getConnection();
+			ps=con.prepareStatement(sql);
+			
+			rs=ps.executeQuery();
+			
+			while (rs.next()) {
+				Carrello c=new Carrello();
+				c.setUsername(rs.getString("username"));
+				c.setRiepilogo(rs.getString("riepilogo"));
+				
+				ordini.add(c);
+			}
+		} finally {
+			try {
+				if (ps!=null)
+					ps.close();
+			} finally {
+				if (con!=null)
+					con.close();
+			}
+		}
+		return ordini;
 	}
 
 	public Collection<Carrello> getOrdini(String username) throws SQLException{

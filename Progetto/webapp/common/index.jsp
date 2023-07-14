@@ -8,7 +8,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%
 	String user=(String) session.getAttribute("user");
-	Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe");
+	Collection<?> scarpe=(Collection<?>) application.getAttribute("scarpe");
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
 	if (carrello==null){
 		carrello=new Carrello();
