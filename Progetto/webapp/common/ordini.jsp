@@ -18,12 +18,12 @@
 <title>Ordini</title>
 </head>
 <body>
-	<%
-	for (Carrello c:ordini){%>
+	<%for (Carrello c:ordini){%>
 		<fieldset>
 		<legend>Ordine</legend>
-			<%=c.getScarpe() %>
+			<%=c.getRiepilogo() %>
 		</fieldset>
 	<%}%>
+	
 </body>
 </html>

@@ -10,11 +10,13 @@ public class Carrello implements Serializable{
 	private int codice;
 	private ArrayList<ScarpaOrdine> scarpe;
 	private String username;
+	private String riepilogo;
 	
 	public Carrello() {
 		codice=-1;
 		scarpe=new ArrayList<>();
 		username="";
+		riepilogo="";
 	}
 
 	public int getCodice() {
@@ -39,6 +41,14 @@ public class Carrello implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getRiepilogo() {
+		return riepilogo;
+	}
+
+	public void setRiepilogo(String riepilogo) {
+		this.riepilogo = riepilogo;
 	}
 	
 }

@@ -41,7 +41,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 		PreparedStatement psTaglia=null;
 
 		String sqlEffettua="INSERT INTO effettua(username) VALUES(?)";
-		String sqlCarrello="INSERT INTO ordine(username) VALUES(?)";
+		String sqlCarrello="INSERT INTO ordine(username, riepilogo) VALUES(?,?)";
 		String sqlHa="INSERT INTO ha(codiceOrdine, codiceScarpa) VALUES(?,?)";
 		String getCarrelloId="SELECT MAX(codice) FROM ordine";
 		String sqlTaglia="INSERT INTO taglia(taglia, codiceScarpa, codiceOrdine) VALUES(?,?,?)";
@@ -56,6 +56,10 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 			psCarrello=con.prepareStatement(sqlCarrello);
 			psCarrello.setString(1, bean.getUsername());
+			System.out.println(bean.getScarpe());
+			String riepilogo=bean.getScarpe()+"<br>Totale: "+bean.getScarpe().parallelStream().mapToDouble(c->c.getPrezzo()).sum();
+			System.out.println(riepilogo);
+			psCarrello.setString(2, riepilogo);
 			psCarrello.executeUpdate();
 			con.commit();
 			
@@ -117,49 +121,29 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 	public Collection<Carrello> getOrdini(String username) throws SQLException{
 		Connection con=null;
 		PreparedStatement psOrdine=null;
-		PreparedStatement psScarpe=null;
 		
 		ResultSet rsOrdine=null;
-		ResultSet rsScarpe=null;
 		
 		Collection<Carrello> ordini=new LinkedList<>();
-		ScarpaDataSource sds=new ScarpaDataSource();
 		
-		String sqlOrdine="SELECT codice FROM ordine WHERE username=?";
-		String sqlScarpe="SELECT DISTINCT(t.codiceScarpa), t.taglia FROM ha, taglia as t WHERE ha.codiceOrdine=? and t.codiceOrdine=ha.codiceOrdine";
+		String sqlOrdine="SELECT riepilogo FROM ordine WHERE username=?";
 		try {
 			con=ds.getConnection();
 			psOrdine=con.prepareStatement(sqlOrdine);
-			psScarpe=con.prepareStatement(sqlScarpe);
 			
 			psOrdine.setString(1, username);
 			
 			rsOrdine=psOrdine.executeQuery();
 			while (rsOrdine.next()) {
 				Carrello c=new Carrello();
-				c.setUsername(username);
-				int codiceCarrello=rsOrdine.getInt("codice");
-				c.setCodice(codiceCarrello);
+				c.setRiepilogo(rsOrdine.getString("riepilogo"));
 				
-				psScarpe.setInt(1, codiceCarrello);
-				rsScarpe=psScarpe.executeQuery();
-				while (rsScarpe.next()) {
-					int codiceScarpa=rsScarpe.getInt("codiceScarpa");
-					int taglia=rsScarpe.getInt("taglia");
-					ScarpaOrdine s=new ScarpaOrdine(sds.doRetrieveByKey(codiceScarpa+""));
-					
-					s.setTaglia(taglia);
-					
-					c.getScarpe().add(s);
-				}
 				ordini.add(c);
 			}
 		} finally {
 			try {
 				if (psOrdine!=null)
 					psOrdine.close();
-				if (psScarpe!=null)
-					psScarpe.close();
 			}finally {
 				if (con!=null)
 					con.close();
