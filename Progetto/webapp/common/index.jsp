@@ -8,6 +8,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%
 	String user=(String) session.getAttribute("user");
+	Boolean isAdmin=(Boolean) session.getAttribute("isAdmin");
 	Collection<?> scarpe=(Collection<?>) application.getAttribute("scarpe");
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
 	if (carrello==null){
@@ -21,58 +22,58 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>LowSneakers</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/index.css">
 </head>
 <body>
 	<div class="user">
 		<%
 		if (user==null){
 		%>
-		<h1>Welcome user</h1>
-		
-		<a href="<%=request.getContextPath() %>/common/login.jsp">Log in</a>
-		<a href="<%=request.getContextPath() %>/common/signup.jsp">Sign up</a>
+		<h1 id="welcome">Welcome user</h1>
+		<ul class="user">
+			<li"><a href="<%=request.getContextPath() %>/common/login.jsp">Log in</a></li>
+			<li><a href="<%=request.getContextPath() %>/common/signup.jsp">Sign up</a></li>
+		</ul>
 		<%}else{ carrello.setUsername(user);%>
-			<h1>Welcome <%=user%></h1>
+			<h1 id="welcome">Welcome <%=user%></h1>
 			<%if (carrello.getScarpe().size()>0) { %>
-				<h2>Carrello: <%=carrello.getScarpe().size() %></h2><br>
+				<h2 id="carrello">Carrello: <%=carrello.getScarpe().size() %></h2>
 			<%} %>
-			<a href="<%=request.getContextPath() %>/common/Logout">Logout</a>
-			<a href="<%=request.getContextPath() %>/common/carrello.jsp">Vai al carrello</a>
-			<a href="<%=request.getContextPath() %>/common/ordini.jsp">Visualizza i tuoi ordini</a>
+			<ul class="user">
+				<li><a href="<%=request.getContextPath() %>/common/Logout">Logout</a></li>
+				<li><a href="<%=request.getContextPath() %>/common/carrello.jsp">Vai al carrello</a></li>
+				<li><a href="<%=request.getContextPath() %>/common/ordini.jsp">Visualizza i tuoi ordini</a></li>
+				<%if (isAdmin!=null && isAdmin){%>
+					<li><a href="<%=request.getContextPath()%>/admin/reserved.jsp">Admin</a></li>
+				<%} %>
+			</ul>
 		<%}%>
-	
-		<%
-		Boolean isAdmin=(Boolean) session.getAttribute("isAdmin");
-
-		if (isAdmin!=null && isAdmin){%>
-			<a href="<%=request.getContextPath()%>/admin/reserved.jsp">Admin</a>
-			<%} %>
  	</div> <!-- fine div user -->
-	<div class="foto">
-		<%
-		Iterator<?> it=scarpe.iterator();
+ 	
+	<div class="scarpa">
+		
+		<%Iterator<?> it=scarpe.iterator();
 	
 		while (it.hasNext()){
 			Scarpa s=(Scarpa) it.next();
 			byte foto[]=FotoControl.load(s.getId()+"");
 			if (foto!=null){%>
-			<fieldset>
-			<legend><%=s.getNome() %></legend>
-				<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>"	 id="scarpa">
-				<%if (user!=null) {%>
-					<form action="AggiungiCarrelloServlet" method="post">
-						<select name="taglia">
-							<%for (int i=38; i<46; i++){%>
-								<option value=<%=i %>><%=i %></option>
-							<%}%>
-						</select>
-						<input type="number" name="quantità" min="1" value="1">
-						<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">
-						<input type="submit" value="Aggiungi al carrello">
-					</form>
-					<p><%=s.getPrezzo() %></p>
-				<%} %>
-			</fieldset>
+				<fieldset>
+				<legend><%=s.getNome() %></legend>
+						<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>">
+					<%if (user!=null) {%>
+						<form action="AggiungiCarrelloServlet" method="post">
+							<select name="taglia">
+								<%for (int i=38; i<46; i++){%>
+									<option value=<%=i %>><%=i %></option>
+								<%}%>
+							</select>
+							<input type="number" name="quantità" min="1" value="1" id="quantità">
+							<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">							<input type="submit" value="Aggiungi al carrello">
+						</form>
+						<p>Prezzo:<%=s.getPrezzo() %></p>
+					<%} %>
+				</fieldset>
 			<%}
 		}%>
 	</div> <!-- fine div foto -->

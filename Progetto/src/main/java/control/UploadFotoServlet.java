@@ -33,7 +33,7 @@ public class UploadFotoServlet extends HttpServlet {
 			}
 		}
 
-		response.sendRedirect(request.getContextPath()+"/common/index.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/add.jsp");
 	}
 
 }

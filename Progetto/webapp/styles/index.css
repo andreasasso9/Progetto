@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+
+body {
+	max-height: 1080px;
+	max-width: 1920px;
+}
+/*
+h1#welcome {
+	width:100%;
+	position: fixed;
+	right: 45%;
+	left: 45%;
+}
+*/
+h2#carrello {
+	width:100%;
+	position: relative;
+	
+}
+
+div.user {
+	width: 100%;
+	top: 0%;
+	background-color: purple;
+	color: white;
+	position: fixed;
+	text-align: center;
+}
+
+a {
+	color: white;
+}
+
+ul.user li{
+	display:inline;
+	padding-right: 2%;
+}
+
+div.scarpa {
+	height: 100%;
+	width: 100%;
+	margin-top: 10%;
+}
+
+div.scarpa fieldset {
+	width: 15%;
+	display: inline-block;
+	margin: 2% 3% 2% 4%;
+}
+
+div.scarpa fieldset img{
+	height: auto;
+	width: 100%;
+	
+}
+
+ul.scarpa li {
+	display: inline;
+}

@@ -29,7 +29,7 @@ public class AddScarpaServlet extends HttpServlet {
 		try {
 			ds.doSave(scarpa);
 			
-			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/admin/add.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

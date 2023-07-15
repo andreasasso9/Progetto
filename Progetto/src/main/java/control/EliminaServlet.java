@@ -21,7 +21,7 @@ public class EliminaServlet extends HttpServlet {
 		try {
 			ds.doDelete(idScarpa);
 			
-			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/admin/delete.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
