@@ -41,7 +41,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 		PreparedStatement psTaglia=null;
 
 		String sqlEffettua="INSERT INTO effettua(username) VALUES(?)";
-		String sqlCarrello="INSERT INTO ordine(username, riepilogo) VALUES(?,?)";
+		String sqlCarrello="INSERT INTO ordine(username, riepilogo, data) VALUES(?,?,?)";
 		String sqlHa="INSERT INTO ha(codiceOrdine, codiceScarpa) VALUES(?,?)";
 		String getCarrelloId="SELECT MAX(codice) FROM ordine";
 		String sqlTaglia="INSERT INTO taglia(taglia, codiceScarpa, codiceOrdine) VALUES(?,?,?)";
@@ -58,6 +58,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 			psCarrello.setString(1, bean.getUsername());
 			String riepilogo=bean.getScarpe()+"<br>Totale: "+bean.getScarpe().parallelStream().mapToDouble(c->c.getPrezzo()).sum();
 			psCarrello.setString(2, riepilogo);
+			psCarrello.setDate(3, new java.sql.Date(System.currentTimeMillis()));
 			psCarrello.executeUpdate();
 			con.commit();
 			
@@ -131,6 +132,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 				Carrello c=new Carrello();
 				c.setUsername(rs.getString("username"));
 				c.setRiepilogo(rs.getString("riepilogo"));
+				c.setData(rs.getDate("data"));
 				
 				ordini.add(c);
 			}
@@ -154,7 +156,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 		
 		Collection<Carrello> ordini=new LinkedList<>();
 		
-		String sqlOrdine="SELECT riepilogo FROM ordine WHERE username=?";
+		String sqlOrdine="SELECT riepilogo, data FROM ordine WHERE username=?";
 		try {
 			con=ds.getConnection();
 			psOrdine=con.prepareStatement(sqlOrdine);
@@ -165,6 +167,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 			while (rsOrdine.next()) {
 				Carrello c=new Carrello();
 				c.setRiepilogo(rsOrdine.getString("riepilogo"));
+				c.setData(rsOrdine.getDate("data"));
 				
 				ordini.add(c);
 			}

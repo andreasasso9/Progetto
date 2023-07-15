@@ -24,5 +24,6 @@
 			<input type="submit" value="Elimina">
 		</form>
 	</fieldset>
+	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 </body>
 </html>

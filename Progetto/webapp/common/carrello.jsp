@@ -11,7 +11,7 @@
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
 %>
 <!DOCTYPE html>
-<html>
+<html lang=it>
 <head>
 <meta charset="ISO-8859-1">
 <title>Carrello</title>
@@ -24,11 +24,13 @@
 		<fieldset>
 		<legend><%=s.getNome() %></legend>
 			<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %></label><br>
-			<img alt="no image" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>" id="scarpa"><br>
+			<img alt="no image" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>"><br>
+			<a href="<%=request.getContextPath() %>/common/RimuoviDalCarrello?scarpaId=<%=s.getId() %>">Rimuovi dal carrello</a>
 		</fieldset>	
 		<%} %>
 		<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a><br>
-		<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a>
+		<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a><br>
+		<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 	</div>
 </body>
 </html>

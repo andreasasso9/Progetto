@@ -2,6 +2,7 @@ package DTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Carrello implements Serializable{
 	
@@ -11,12 +12,14 @@ public class Carrello implements Serializable{
 	private ArrayList<ScarpaOrdine> scarpe;
 	private String username;
 	private String riepilogo;
+	private Date data;
 	
 	public Carrello() {
 		codice=-1;
 		scarpe=new ArrayList<>();
 		username="";
 		riepilogo="";
+		data=null;
 	}
 
 	public int getCodice() {
@@ -49,6 +52,14 @@ public class Carrello implements Serializable{
 
 	public void setRiepilogo(String riepilogo) {
 		this.riepilogo = riepilogo;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 	
 }

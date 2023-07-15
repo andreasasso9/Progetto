@@ -26,5 +26,6 @@ ordini.sort(comparator);
 			<%=c.getRiepilogo() %>
 		</fieldset>
 	<%} %>
+	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 </body>
 </html>

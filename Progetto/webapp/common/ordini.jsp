@@ -21,9 +21,11 @@
 	<%for (Carrello c:ordini){%>
 		<fieldset>
 		<legend>Ordine</legend>
+			<%=c.getData() %><br>
 			<%=c.getRiepilogo() %>
 		</fieldset>
 	<%}%>
+	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 	
 </body>
 </html>

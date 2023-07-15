@@ -43,5 +43,6 @@
 			<input type="submit" value="Upload"><input type="reset" value="Reset">
 		</form>
 	</fieldset>
+	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 </body>
 </html>
