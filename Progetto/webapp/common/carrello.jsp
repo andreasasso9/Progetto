@@ -18,19 +18,19 @@
 </head>
 <body>
 	<div id="ordini">
-		<h1>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()).sum() %></h1>
+		<h1>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()*s.getQuantità()).sum() %></h1>
+		<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a>
+		<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a>
+		<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 		<%
 		for (ScarpaOrdine s:carrello.getScarpe()){%>
 		<fieldset>
 		<legend><%=s.getNome() %></legend>
-			<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %></label><br>
+			<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %><br>quantità:<%=s.getQuantità() %></label><br>
 			<img alt="no image" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>"><br>
 			<a href="<%=request.getContextPath() %>/common/RimuoviDalCarrello?scarpaId=<%=s.getId() %>">Rimuovi dal carrello</a>
 		</fieldset>	
 		<%} %>
-		<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a><br>
-		<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a><br>
-		<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
 	</div>
 </body>
 </html>

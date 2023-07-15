@@ -22,6 +22,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scarpaId=request.getParameter("scarpaId");
 		int taglia=Integer.parseInt(request.getParameter("taglia"));
+		int quantità=Integer.parseInt(request.getParameter("quantità"));
 		HttpSession session=request.getSession();
 		
 		Carrello carrello=(Carrello) session.getAttribute("carrello");
@@ -34,6 +35,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 			
 			ScarpaOrdine so=new ScarpaOrdine(s);
 			so.setTaglia(taglia);
+			so.setQuantità(quantità);
 			
 			carrello.getScarpe().add(so);
 			session.setAttribute("carrello", carrello);

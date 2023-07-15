@@ -56,7 +56,7 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 
 			psCarrello=con.prepareStatement(sqlCarrello);
 			psCarrello.setString(1, bean.getUsername());
-			String riepilogo=bean.getScarpe()+"<br>Totale: "+bean.getScarpe().parallelStream().mapToDouble(c->c.getPrezzo()).sum();
+			String riepilogo=bean.getScarpe()+"<br>Totale: "+bean.getScarpe().parallelStream().mapToDouble(c->c.getPrezzo()*c.getQuantità()).sum();
 			psCarrello.setString(2, riepilogo);
 			psCarrello.setDate(3, new java.sql.Date(System.currentTimeMillis()));
 			psCarrello.executeUpdate();

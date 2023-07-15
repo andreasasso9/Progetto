@@ -157,6 +157,33 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 		}
 		return scarpa;
 	}
+	public synchronized boolean updatePrezzo(String id, double prezzo) throws NumberFormatException, SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		
+		String sql="UPDATE scarpa SET prezzo=? WHERE id=?";
+		
+		try {
+			con=ds.getConnection();
+			con.setAutoCommit(false);
+			ps=con.prepareStatement(sql);
+			
+			ps.setDouble(1, prezzo);
+			ps.setInt(2, Integer.parseInt(id));
+			
+			ps.executeUpdate();
+			con.commit();
+		} finally {
+			try {
+				if (ps!=null)
+					ps.close();
+			} finally {
+				if (con!=null)
+					con.close();
+			}
+		}
+		return true;
+	}
 }
 
 

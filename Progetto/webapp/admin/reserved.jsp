@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Pagina riservata all'admin</h1>
-	<a href="<%=request.getContextPath() %>/admin/add.jsp">Inserisci un prodotto</a><br>
+	<a href="<%=request.getContextPath() %>/admin/add.jsp">Inserisci o modifica una scarpa</a><br>
 	<a href="<%=request.getContextPath() %>/admin/delete.jsp">Elimina un prodotto</a><br>
 	<a href="<%=request.getContextPath() %>/admin/ordiniUtenti.jsp">Visualizza gli ordni di tutti gli utenti</a><br>
 	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>

@@ -4,10 +4,12 @@ public class ScarpaOrdine extends Scarpa{
 	private static final long serialVersionUID = 556254488397560292L;
 
 	private int taglia;
+	private int quantità;
 	
 	public ScarpaOrdine() {
 		super();
 		taglia=-1;
+		quantità=0;
 	}
 	
 	public ScarpaOrdine(Scarpa s) {
@@ -16,6 +18,7 @@ public class ScarpaOrdine extends Scarpa{
 		setNome(s.getNome());
 		setPrezzo(s.getPrezzo());
 		taglia=-1;
+		quantità=0;
 	}
 
 	public int getTaglia() {
@@ -28,7 +31,15 @@ public class ScarpaOrdine extends Scarpa{
 
 	@Override
 	public String toString() {
-		return getNome()+" "+getPrezzo()+" "+getTaglia();
+		return "Nome:"+getNome()+" Prezzo:"+getPrezzo()+" Taglia:"+getTaglia()+" Quantità:"+getQuantità();
+	}
+
+	public int getQuantità() {
+		return quantità;
+	}
+
+	public void setQuantità(int quantità) {
+		this.quantità = quantità;
 	}
 	
 }

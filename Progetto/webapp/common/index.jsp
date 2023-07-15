@@ -66,6 +66,7 @@
 								<option value=<%=i %>><%=i %></option>
 							<%}%>
 						</select>
+						<input type="number" name="quantità" min="1" value="1">
 						<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">
 						<input type="submit" value="Aggiungi al carrello">
 					</form>

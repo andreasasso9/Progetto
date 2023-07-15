@@ -15,7 +15,7 @@
 <body>
 	<fieldset>
 		<legend>Aggiungi una scarpa</legend>
-		<form action="AddScarpaServlet" method="post"><br>
+		<form action="AddScarpaServlet" method="post">
 			<input type="text" name="nome" placeholder="Nome"><br>
 			<input type="number" name="prezzo" placeholder="Prezzo"><br>
 			<input type="submit"> <input type="reset">
@@ -26,21 +26,34 @@
 	<legend>Aggiungi una foto</legend>
 		<form action="UploadFotoServlet" method="post" enctype="multipart/form-data">
 			<select name="id">
-			<%
-				if (scarpe != null && scarpe.size()>0){
+				<%if (scarpe != null && scarpe.size()>0){
 					Iterator<?> it=scarpe.iterator();
 					while (it.hasNext()){
-						Scarpa s=(Scarpa) it.next();
-			%>
+						Scarpa s=(Scarpa) it.next();%>
 						<option value="<%=s.getId() %>"><%=s.getNome() %></option>
-			<%
-					}
-				}
-			%>
+					<%}
+				}%>
 			</select>
 			<br>
 			<input type="file" name="foto" value="Inserisci una foto">
 			<input type="submit" value="Upload"><input type="reset" value="Reset">
+		</form>
+	</fieldset>
+	
+	<fieldset>
+	<legend>Cambia il prezzo di una scarpa</legend>
+		<form action="CambiaPrezzoServlet" method="post">
+			<select name="id">
+				<%if (scarpe != null && scarpe.size()>0){
+					Iterator<?> it=scarpe.iterator();
+					while (it.hasNext()){
+						Scarpa s=(Scarpa) it.next();%>
+						<option value="<%=s.getId() %>"><%=s.getNome() %></option>
+					<%}
+				}%>
+			</select>
+			<input type="number" name="prezzo" min="1">
+			<input type="submit">
 		</form>
 	</fieldset>
 	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
