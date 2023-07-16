@@ -1,17 +1,15 @@
 @charset "ISO-8859-1";
 
 body {
-	max-height: 1080px;
-	max-width: 1920px;
+	max-height: 100%;
+	max-width: 100%;
+	background-image: url("../images/pexels-melvin-buezo-2529157.jpg");
+	background-repeat: no-repeat;
+	background-position: center top 0%;
+	background-attachment: fixed;
+	background-size: 40%;
 }
-/*
-h1#welcome {
-	width:100%;
-	position: fixed;
-	right: 45%;
-	left: 45%;
-}
-*/
+
 h2#carrello {
 	width:100%;
 	position: relative;
@@ -21,7 +19,7 @@ h2#carrello {
 div.user {
 	width: 100%;
 	top: 0%;
-	background-color: purple;
+	background-color: #fbc40e;
 	color: white;
 	position: fixed;
 	text-align: center;
@@ -29,11 +27,13 @@ div.user {
 
 a {
 	color: white;
+	text-decoration: none;
 }
 
 ul.user li{
 	display:inline;
 	padding-right: 2%;
+	font-size: x-large;
 }
 
 div.scarpa {
@@ -46,6 +46,7 @@ div.scarpa fieldset {
 	width: 15%;
 	display: inline-block;
 	margin: 2% 3% 2% 4%;
+	background-color: #fbc40e;
 }
 
 div.scarpa fieldset img{
@@ -56,4 +57,8 @@ div.scarpa fieldset img{
 
 ul.scarpa li {
 	display: inline;
+}
+
+legend {
+	font-size: x-large;
 }

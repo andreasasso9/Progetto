@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+body {
+	max-height: 100%;
+	max-width: 100%;
+	background-image: url("../images/pexels-melvin-buezo-2529157.jpg");
+	background-repeat: no-repeat;
+	background-position: top 0% center;
+	background-attachment: fixed;
+	background-size: 40%;
+}
+
+div#container {
+	display: flex;
+	justify-content: center;
+}
+
+div#form {
+	text-align: center;
+	width: 20%;
+	display : flex;
+	justify-content: center;
+}
+
+fieldset {
+	font-size: x-large;
+}
+
+legend {
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+p {
+	color: white;
+}
