@@ -1,3 +1,4 @@
+<%@page import="DTO.ScarpaOrdine"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Collection"%>
 <%@page import="model.CarrelloDataSource"%>
@@ -12,20 +13,20 @@
 	Collection<Carrello> ordini=cds.getOrdini(user);
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Ordini</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/ordini.css">
 </head>
 <body>
+	<a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a>
 	<%for (Carrello c:ordini){%>
 		<fieldset>
 		<legend>Ordine</legend>
-			<%=c.getData() %><br>
+			Data:<%=c.getData() %><br>
 			<%=c.getRiepilogo() %>
 		</fieldset>
 	<%}%>
-	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
-	
 </body>
 </html>

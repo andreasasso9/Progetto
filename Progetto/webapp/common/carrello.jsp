@@ -15,19 +15,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Carrello</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/carrello.css">
 </head>
 <body>
-	<div id="ordini">
+	<fieldset id="ordine">
 		<%if (carrello.getScarpe().size()==0) {%>
-			<h1>Il carrello è vuoto, <a href="<%=request.getContextPath() %>/common/index.jsp">torna alla home per acquistare</a></h1>
+			<h1 id="vuoto">Il carrello è vuoto, <a href="<%=request.getContextPath() %>/common/index.jsp">torna alla home per acquistare</a></h1>
 		<%} else { %>
-			<h1>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()*s.getQuantità()).sum() %></h1>
-			<a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a>
-			<a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a>
-			<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
+			<legend>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()*s.getQuantità()).sum() %></legend>
+			<ul>
+				<li><a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a></li>
+				<li><a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a></li>
+				<li><a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a></li>
+			</ul>
 		
 			<%for (ScarpaOrdine s:carrello.getScarpe()){%>
-			<fieldset>
+			<fieldset id="scarpa">
 			<legend><%=s.getNome() %></legend>
 				<label for="scarpa">prezzo:<%=s.getPrezzo() %><br>taglia:<%=s.getTaglia() %><br>quantità:<%=s.getQuantità() %></label><br>
 				<img alt="no image" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>"><br>
@@ -35,6 +38,6 @@
 			</fieldset>	
 			<%}
 		} %>
-	</div>
+	</fieldset>
 </body>
 </html>

@@ -1,0 +1,64 @@
+@charset "ISO-8859-1";
+
+body {
+	max-height: 100%;
+	max-width: 100%;
+	background-image: url("../images/pexels-melvin-buezo-2529157.jpg");
+	background-repeat: no-repeat;
+	background-position: center top 0%;
+	background-attachment: fixed;
+	background-size: 40%;
+	background-color: #fbc40e;
+}
+
+fieldset#ordine {
+	border: none;
+}
+
+fieldset#ordine fieldset#scarpa {
+	width: 15%;
+	display: inline-block;
+	margin: 2% 3% 2% 4%;
+	background-color: #fbc40e;
+	font-size: large;
+}
+
+fieldset#ordine fieldset#scarpa img{
+	height: auto;
+	width: 100%;
+}
+
+fieldset#ordine > legend{
+	font-size: xx-large;
+	text-align: center;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+fieldset#ordine ul a {
+	color: white;
+	
+}
+
+fieldset#ordine ul {
+	text-align: center;
+}
+
+ul li {
+	display:inline;
+	padding-right: 2%;
+	font-size: x-large;
+}
+
+fieldset#ordine #vuoto {
+	color: white;
+	text-align: center;
+}
+
+fieldset#ordine #vuoto a{
+	text-decoration: underline;
+}

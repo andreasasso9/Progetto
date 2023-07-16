@@ -39,12 +39,16 @@
 						<img alt="no immage" src="<%=request.getContextPath() %>/common/GetPictureServlet?id=<%=s.getId() %>">
 					<%if (user!=null) {%>
 						<form action="AggiungiCarrelloServlet" method="post">
-							<select name="taglia">
-								<%for (int i=38; i<46; i++){%>
-									<option value=<%=i %>><%=i %></option>
-								<%}%>
-							</select>
+						<div id="caratteristiche">
+							<label for="taglia">Taglia</label>
+								<select name="taglia" id="taglia">
+									<%for (int i=38; i<46; i++){%>
+										<option value=<%=i %>><%=i %></option>
+									<%}%>
+								</select><br>
+							<label for="quantità">Quantità</label>
 							<input type="number" name="quantità" min="1" value="1" id="quantità">
+						</div>
 							<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">							<input type="submit" value="Aggiungi al carrello">
 						</form>
 						<p>Prezzo:<%=s.getPrezzo() %></p>

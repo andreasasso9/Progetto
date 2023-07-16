@@ -31,7 +31,7 @@ public class ScarpaOrdine extends Scarpa{
 
 	@Override
 	public String toString() {
-		return "Nome:"+getNome()+" Prezzo:"+getPrezzo()+" Taglia:"+getTaglia()+" Quantità:"+getQuantità();
+		return "Nome:"+getNome()+" Prezzo:"+getPrezzo()+" Taglia:"+getTaglia()+" Quantità:"+getQuantità()+"<br>";
 	}
 
 	public int getQuantità() {

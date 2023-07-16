@@ -8,12 +8,12 @@ body {
 	background-position: center top 0%;
 	background-attachment: fixed;
 	background-size: 40%;
+	background-color: #fbc40e;
 }
 
 h2#carrello {
 	width:100%;
 	position: relative;
-	
 }
 
 div.user {
@@ -46,7 +46,12 @@ div.scarpa fieldset {
 	width: 15%;
 	display: inline-block;
 	margin: 2% 3% 2% 4%;
+	background-image: url("../images/pexels-melvin-buezo-2529159.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
 	background-color: #fbc40e;
+	border: thick;
 }
 
 div.scarpa fieldset img{
@@ -60,5 +65,21 @@ ul.scarpa li {
 }
 
 legend {
+	font-size: xx-large;
+	color: white;
+}
+
+div.scarpa fieldset p{
+	color: white;
+	font-size: large;
+}
+
+div#caratteristiche label, input{
+	display: block;
+}
+
+label {
+	color: white;
 	font-size: x-large;
+	font-weight: bold;
 }
