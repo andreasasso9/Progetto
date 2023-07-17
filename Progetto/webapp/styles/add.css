@@ -27,6 +27,11 @@ div.form {
 
 fieldset {
 	font-size: x-large;
+	transition: all 0.3s ease-in-out;
+	border-color: white;
+	border-radius: 5%;
+	border-style: double;
+	margin-bottom: 20%;
 }
 
 legend {
@@ -52,4 +57,10 @@ aside:hover a {
 	color: blue;
 	position: relative;
 	bottom: 2px;
+}
+
+fieldset:hover {
+	position: relative;
+	bottom: 10px;
+	border-color: blue;
 }

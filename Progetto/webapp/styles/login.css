@@ -25,6 +25,10 @@ div#form {
 
 fieldset {
 	font-size: x-large;
+	transition: all 0.3s ease-in-out;
+	border-color: white;
+	border-radius: 5%;
+	border-style: double;
 }
 
 legend {
@@ -61,3 +65,10 @@ input#submit:hover, input#reset:hover {
 input.dati {
 	width: 66%;
 }
+
+fieldset:hover {
+	position: relative;
+	bottom: 10px;
+	border-color: blue;
+}
+
