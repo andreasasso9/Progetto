@@ -46,8 +46,8 @@ div.scarpa fieldset {
 	width: 15%;
 	display: inline-block;
 	margin: 2% 3% 2% 4%;
-	background-image: url("../images/pexels-melvin-buezo-2529159.jpg");
-	background-size: cover;
+	background-image: url("../images/pexels-jd-danny-2385477.jpg");
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	background-color: #fbc40e;

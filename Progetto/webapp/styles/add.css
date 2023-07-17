@@ -1,5 +1,7 @@
 @charset "ISO-8859-1";
 
+@charset "ISO-8859-1";
+
 body {
 	max-height: 100%;
 	max-width: 100%;
@@ -10,12 +12,12 @@ body {
 	background-size: 40%;
 }
 
-div#container {
+div.container {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
-div#form {
+div.form {
 	text-align: center;
 	width: 20%;
 	display : flex;
@@ -27,15 +29,12 @@ fieldset {
 }
 
 legend {
-	color: white;
+	color: #fbc40e;
+	font-weight: bold;
 }
 
-div#form a {
-	text-decoration: none;
-	color: white;
+a {
+	position: fixed;
+	right: 10%;
+	font-size: xx-large;
 }
-
-p {
-	color: white;
-}
-

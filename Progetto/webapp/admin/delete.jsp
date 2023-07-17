@@ -9,21 +9,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Elimina</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/login.css">
 </head>
 <body>
-	<fieldset>
-	<legend>Seleziona la scarpa da eliminare</legend>
-		<form action="EliminaServlet" method="post">
-			<select name="scarpa">
-				<%Iterator<?> it=scarpe.iterator();
-				while (it.hasNext()) {
-					Scarpa s=(Scarpa) it.next();%>
-					<option value="<%=s.getId() %>"><%=s.getNome() %></option>
-				<%} %>
-			</select>
-			<input type="submit" value="Elimina">
-		</form>
-	</fieldset>
-	<a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a>
+	<div id="container">
+		<div id="form">
+			<fieldset>
+			<legend>Seleziona la scarpa da eliminare</legend>
+				<form action="EliminaServlet" method="post">
+					<select name="scarpa">
+						<%Iterator<?> it=scarpe.iterator();
+						while (it.hasNext()) {
+							Scarpa s=(Scarpa) it.next();%>
+							<option value="<%=s.getId() %>"><%=s.getNome() %></option>
+						<%} %>
+					</select>
+					<input type="submit" value="Elimina"><br>
+					<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina riservata all'admin</a>
+				</form>
+			</fieldset>
+		</div>
+	</div>
 </body>
 </html>

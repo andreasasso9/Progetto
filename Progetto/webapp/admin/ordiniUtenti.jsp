@@ -18,11 +18,14 @@ ordini.sort(comparator);
 <head>
 <meta charset="ISO-8859-1">
 <title>Ordini Utenti</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/ordini.css">
 </head>
 <body>
+	<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a>
 	<%for (Carrello c:ordini) { %>
 		<fieldset>
 		<legend><%=c.getUsername() %></legend>
+			<%=c.getData() %><br>
 			<%=c.getRiepilogo() %>
 		</fieldset>
 	<%} %>
