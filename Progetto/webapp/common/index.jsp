@@ -22,10 +22,12 @@
 <meta charset="ISO-8859-1">
 <title>LowSneakers</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/index.css">
+<script src="<%=request.getContextPath() %>/scripts/jquery.js"></script>
+<script src="<%=request.getContextPath() %>/scripts/ordina.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
- 	
+	
 	<div class="scarpa">
 		
 		<%Iterator<?> it=scarpe.iterator();
@@ -46,12 +48,14 @@
 										<option value=<%=i %>><%=i %></option>
 									<%}%>
 								</select><br>
-							<label for="quantità">Quantità</label>
-							<input type="number" name="quantità" min="1" value="1" id="quantità">
+							<label for="quantitÃ ">Quantit&aacute;</label>
+							<input type="number" name="quantitÃ " min="1" value="1" id="quantitÃ ">
 						</div>
 							<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">							<input type="submit" value="Aggiungi al carrello">
 						</form>
-						<p>Prezzo:<%=s.getPrezzo() %></p>
+						<p>&euro;<%=s.getPrezzo() %></p>
+					<%} else { %>
+						<p>&euro;<%=s.getPrezzo() %></p>
 					<%} %>
 				</fieldset>
 			<%}
