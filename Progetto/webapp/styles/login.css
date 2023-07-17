@@ -57,3 +57,7 @@ input#submit:hover, input#reset:hover {
 	background-color: #fbc40e;
 	color: white;
 }
+
+input.dati {
+	width: 66%;
+}
