@@ -73,7 +73,5 @@ a:hover, li:hover {
 fieldset#ordine fieldset#scarpa:hover {
 	position: relative;
 	bottom: 10px;
-	position: relative;
-	bottom: 10px;
 	border-color: blue;
 }
