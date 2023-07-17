@@ -7,7 +7,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center top 0%;
 	background-attachment: fixed;
-	background-size: 40%;
+	background-size: contain;
 	background-color: #fbc40e;
 }
 
@@ -21,6 +21,10 @@ fieldset#ordine fieldset#scarpa {
 	margin: 2% 3% 2% 4%;
 	background-color: #fbc40e;
 	font-size: large;
+	transition: all 0.3s ease-in-out;
+	border-color: white;
+	border-radius: 5%;
+	border-style: double;
 }
 
 fieldset#ordine fieldset#scarpa img{
@@ -37,10 +41,7 @@ fieldset#ordine > legend{
 a {
 	text-decoration: none;
 	color: white;
-}
-
-fieldset#ordine ul a {
-	color: white;
+	transition: all 0.3s ease-in-out;
 	
 }
 
@@ -61,4 +62,18 @@ fieldset#ordine #vuoto {
 
 fieldset#ordine #vuoto a{
 	text-decoration: underline;
+}
+
+a:hover, li:hover {
+	color: blue;
+	position: relative;
+	bottom: 2px;
+}
+
+fieldset#ordine fieldset#scarpa:hover {
+	position: relative;
+	bottom: 10px;
+	position: relative;
+	bottom: 10px;
+	border-color: blue;
 }

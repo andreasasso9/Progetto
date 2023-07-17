@@ -14,7 +14,7 @@
 			<form action="Login" method="post">
 				<input type="text" name="username" placeholder="Username" id="username" autofocus><br>
 				<input type="password" name="password" placeholder="Password" id="password"><br>
-				<input type="submit" value="Log in">
+				<input type="submit" value="Log in" id="submit">
 			</form>
 			<a href="signup.jsp">Crea un nuovo account</a><br>
 			<a href="index.jsp">Torna alla home</a><br>

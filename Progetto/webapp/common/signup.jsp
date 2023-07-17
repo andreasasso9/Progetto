@@ -25,8 +25,8 @@
 					
 					<input type="password" name="password" placeholder="password" id="password"><br>
 					
-					<input type="submit">
-					<input type="reset">
+					<input type="submit" id="submit">
+					<input type="reset" id="reset">
 				</form>
 				
 				<a href="login.jsp">Effettua il login</a><br>

@@ -24,7 +24,7 @@
 							<option value="<%=s.getId() %>"><%=s.getNome() %></option>
 						<%} %>
 					</select>
-					<input type="submit" value="Elimina"><br>
+					<input type="submit" value="Elimina" id="submit"><br>
 					<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina riservata all'admin</a>
 				</form>
 			</fieldset>

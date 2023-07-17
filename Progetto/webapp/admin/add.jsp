@@ -14,7 +14,9 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/add.css">
 </head>
 <body>
-	<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a>
+	<aside>
+		<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a>
+	</aside>
 	<div class="container">
 		<div class="form">
 			<fieldset>

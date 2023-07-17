@@ -7,7 +7,8 @@ body {
 	background-repeat: no-repeat;
 	background-position: top 0% center;
 	background-attachment: fixed;
-	background-size: 40%;
+	background-size: contain;
+	background-color: #fbc40e;
 }
 
 div#container {
@@ -33,9 +34,26 @@ legend {
 div#form a {
 	text-decoration: none;
 	color: white;
+	transition: all 0.3s ease-in-out;
 }
 
 p {
 	color: white;
 }
 
+input#submit, input#reset {
+	background-color: white;
+	color: #fbc40e;
+	font-size: large;
+	font-weight: bold;
+	transition: all 0.3s ease-in-out;
+}
+
+div#form a:hover {
+	color: blue;
+}
+
+input#submit:hover, input#reset:hover {
+	background-color: #fbc40e;
+	color: white;
+}

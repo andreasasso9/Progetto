@@ -15,9 +15,10 @@ if (carrello==null){
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/index.css">
 </head>
 <body>
-	<div class="user">
+	<header>
 		<%
 		if (user==null){
 		%>
@@ -40,6 +41,6 @@ if (carrello==null){
 				<%} %>
 			</ul>
 		<%}%>
- 	</div> <!-- fine div user -->
+ 	</header> <!-- fine div user -->
 </body>
 </html>

@@ -8,6 +8,7 @@ body {
 	background-position: center top 0%;
 	background-attachment: fixed;
 	background-size: 40%;
+	background-color: #fbc40e;
 }
 
 fieldset {
@@ -15,10 +16,47 @@ fieldset {
 	margin: 2% 3% 2% 4%;
 	background-color: #fbc40e;
 	font-size: large;
+	border-color: white;
+	transition: all 0.3s ease-in-out;
+	border-style: double;
+	border-radius: 5%
+}
+
+legend {
+	color: white;
 }
 
 a {
+	font-size: xx-large;
+	color: white;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+}
+
+p {
+	color: white;
+}
+
+aside {
+	width: 20%;
+	position: fixed;
+	right: 2%;
+}
+
+a:hover {
+	color: blue;
+	position: relative;
+	bottom: 2px;
+}
+
+fieldset:hover {
+	border-color: blue;
+	position: relative;
+	bottom: 2px;
+}
+
+div ul {
+	list-style-type: circle;
 	position: fixed;
 	right: 10%;
-	font-size: xx-large;
 }

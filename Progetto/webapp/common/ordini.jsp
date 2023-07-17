@@ -20,12 +20,14 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/ordini.css">
 </head>
 <body>
-	<a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a>
+	<aside>
+		<a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a>
+	</aside>
 	<%for (Carrello c:ordini){%>
 		<fieldset>
 		<legend>Ordine</legend>
-			Data:<%=c.getData() %><br>
-			<%=c.getRiepilogo() %>
+			<p>Data:<%=c.getData() %><br>
+			<%=c.getRiepilogo() %></p>
 		</fieldset>
 	<%}%>
 </body>

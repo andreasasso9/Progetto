@@ -9,6 +9,7 @@ body {
 	background-attachment: fixed;
 	background-size: 40%;
 	background-color: #fbc40e;
+	background-size: contain;
 }
 
 h2#carrello {
@@ -16,18 +17,19 @@ h2#carrello {
 	position: relative;
 }
 
-div.user {
+header {
 	width: 100%;
-	top: 0%;
 	background-color: #fbc40e;
 	color: white;
 	position: fixed;
 	text-align: center;
+	top: 0%;
 }
 
 a {
 	color: white;
 	text-decoration: none;
+	transition: all 0.3s ease-in-out;
 }
 
 ul.user li{
@@ -44,14 +46,18 @@ div.scarpa {
 
 div.scarpa fieldset {
 	width: 15%;
+	height: auto;
 	display: inline-block;
-	margin: 2% 3% 2% 4%;
+	margin: 5% 3% 2% 4%;
 	background-image: url("../images/pexels-jd-danny-2385477.jpg");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	background-color: #fbc40e;
-	border: thick;
+	transition: all 0.3s ease-in-out;
+	border-color: white;
+	border-radius: 5%;
+	border-style: double;
 }
 
 div.scarpa fieldset img{
@@ -82,4 +88,16 @@ label {
 	color: white;
 	font-size: x-large;
 	font-weight: bold;
+}
+
+a:hover {
+	color: blue;
+	position: relative;
+	bottom: 2px;
+}
+
+div.scarpa fieldset:hover {
+	position: relative;
+	bottom: 10px;
+	border-color: blue;
 }
