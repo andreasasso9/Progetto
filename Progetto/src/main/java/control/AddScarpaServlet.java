@@ -15,7 +15,8 @@ import model.ScarpaDataSource;
 @WebServlet("/admin/AddScarpaServlet")
 public class AddScarpaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome=request.getParameter("nome");
 		double prezzo=Double.parseDouble(request.getParameter("prezzo"));

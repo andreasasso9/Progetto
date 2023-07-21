@@ -14,7 +14,7 @@ if (carrello==null){
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/index.css">
 <script src="<%=request.getContextPath() %>/scripts/jquery.js"></script>
 <script src="<%=request.getContextPath() %>/scripts/ordina.js"></script>
@@ -31,8 +31,9 @@ if (carrello==null){
 			</ul>
 		<%}else{ carrello.setUsername(user);%>
 			<h1 id="welcome">Welcome <%=user%></h1>
-			<%if (carrello.getScarpe().size()>0) { %>
-				<h2 id="carrello">Carrello: <%=carrello.getScarpe().size() %></h2>
+			<%	int size=carrello.getScarpe().size();
+				if (size>0) { %>
+					<h2 id="carrello">Carrello: <%=size %></h2>
 			<%} %>
 			<ul class="user">
 				<li><a href="<%=request.getContextPath() %>/common/Logout">Logout</a></li>

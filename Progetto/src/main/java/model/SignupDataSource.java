@@ -20,13 +20,13 @@ public class SignupDataSource {
 			ds = (DataSource) envCtx.lookup("jdbc/progetto");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
 		}
 	}
 	
 	public synchronized void insertNewUser(String nome, String cognome, String username, String email, String password, int età, String[] telefoni) throws SQLException {
 		Connection con=null;
-		PreparedStatement psUser=null, psTel=null;
+		PreparedStatement psUser=null;
+		PreparedStatement psTel=null;
 		
 		String userQuery="INSERT INTO utente(username, email, pass, nome, cognome, età) VALUES(?,?,?,?,?,?)";
 		String telQuery="INSERT INTO telefono(num, username) VALUES(?,?)";
@@ -45,17 +45,15 @@ public class SignupDataSource {
 			psUser.setString(5, cognome);
 			psUser.setInt(6, età);
 			
-			System.out.println("user insert: "+ psUser.executeUpdate());
+			psUser.executeUpdate();
 			
 			psTel=con.prepareStatement(telQuery);
 			psTel.setString(2, username);
 			for (String s:telefoni) {
 				psTel.setString(1, s);
-				
-				System.out.println("tel insert: "+ psTel.executeUpdate());
-				con.commit();
+				psTel.executeUpdate();
 			}
-			
+			con.commit();
 		} finally {
 			try {
 				if (psUser!=null)

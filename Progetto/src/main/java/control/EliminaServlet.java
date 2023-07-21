@@ -15,6 +15,7 @@ import model.ScarpaDataSource;
 public class EliminaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idScarpa=request.getParameter("scarpa");
 		ScarpaDataSource ds=new ScarpaDataSource();

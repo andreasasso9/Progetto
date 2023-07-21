@@ -19,9 +19,17 @@ import model.StringFunctions;
 public class SignupServlet extends HttpServlet implements StringFunctions {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome, cognome, telefoni[], username, email, password, età;
-		boolean usernameValid=false, emailValid=false;
+		String nome;
+		String cognome;
+		String[] telefoni;
+		String username;
+		String email;
+		String password;
+		String età;
+		boolean usernameValid=false;
+		boolean emailValid=false;
 		RequestDispatcher dispatcherToSignup=request.getRequestDispatcher("signup.jsp");
 
 		nome=request.getParameter("nome");

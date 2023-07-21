@@ -17,13 +17,15 @@ import DTO.ScarpaOrdine;
 public class RimuoviDalCarrello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		Carrello carrello=(Carrello) session.getAttribute("carrello");
 		String scarpaId=request.getParameter("scarpaId");
 		
-		Optional<ScarpaOrdine>scarpaDaRimuovere=carrello.getScarpe().parallelStream().filter(s->s.getId()==Integer.parseInt(scarpaId)).findFirst();
-		carrello.getScarpe().remove(scarpaDaRimuovere.get());
+		Optional<ScarpaOrdine> scarpaDaRimuovere=carrello.getScarpe().parallelStream().filter(s->s.getId()==Integer.parseInt(scarpaId)).findFirst();
+		if (scarpaDaRimuovere.isPresent())
+			carrello.getScarpe().remove(scarpaDaRimuovere.get());
 		session.setAttribute("carrello", carrello);
 		response.sendRedirect(request.getContextPath()+"/common/carrello.jsp");
 	}

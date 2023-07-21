@@ -15,6 +15,7 @@ import model.ScarpaDataSource;
 public class CambiaPrezzoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scarpaId=request.getParameter("id");
 		double prezzo=Double.parseDouble(request.getParameter("prezzo"));
@@ -22,8 +23,6 @@ public class CambiaPrezzoServlet extends HttpServlet {
 		ScarpaDataSource ds=new ScarpaDataSource();
 		try {
 			ds.updatePrezzo(scarpaId, prezzo);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

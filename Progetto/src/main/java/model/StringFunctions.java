@@ -15,7 +15,6 @@ public interface StringFunctions {
 						).toLowerCase().substring(1,3);
 			}
 		} catch (java.security.NoSuchAlgorithmException e) {
-			System.out.println(e);
 		}
 		return hashString;
 	}

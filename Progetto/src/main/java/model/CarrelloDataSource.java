@@ -27,7 +27,6 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 			ds = (DataSource) envCtx.lookup("jdbc/progetto");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
 		}
 	}
 

@@ -21,7 +21,6 @@ public class CheckFields {
 			ds = (DataSource) envCtx.lookup("jdbc/progetto");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
 		}
 	}
 	

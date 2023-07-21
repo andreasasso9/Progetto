@@ -19,6 +19,7 @@ maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class UploadFotoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 
@@ -28,7 +29,6 @@ public class UploadFotoServlet extends HttpServlet {
 				try {
 					FotoControl.updatePhoto(id, part.getInputStream());
 				} catch (SQLException sqlException) {
-					System.out.println(sqlException);
 				}
 			}
 		}

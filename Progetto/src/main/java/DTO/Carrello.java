@@ -3,13 +3,14 @@ package DTO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Carrello implements Serializable{
 	
 	private static final long serialVersionUID = 6619739267570890509L;
 	
 	private int codice;
-	private ArrayList<ScarpaOrdine> scarpe;
+	private List<ScarpaOrdine> scarpe;
 	private String username;
 	private String riepilogo;
 	private Date data;
@@ -30,11 +31,11 @@ public class Carrello implements Serializable{
 		this.codice = codice;
 	}
 
-	public ArrayList<ScarpaOrdine> getScarpe() {
+	public List<ScarpaOrdine> getScarpe() {
 		return scarpe;
 	}
 
-	public void setScarpe(ArrayList<ScarpaOrdine> scarpe) {
+	public void setScarpe(List<ScarpaOrdine> scarpe) {
 		this.scarpe = scarpe;
 	}
 

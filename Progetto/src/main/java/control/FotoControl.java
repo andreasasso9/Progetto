@@ -23,7 +23,6 @@ public class FotoControl {
 			ds = (DataSource) envCtx.lookup("jdbc/progetto");
 			
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
 		}
 	}
 	
@@ -48,20 +47,17 @@ public class FotoControl {
 			}
 
 		} catch (SQLException sqlException) {
-			System.out.println(sqlException);
 		} 
 			finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				System.out.println(sqlException);
 			} finally {
 				if (connection != null)
 					try {
 						connection.close();
 					} catch (SQLException e) {
-						e.printStackTrace();
 					}
 			}
 		}
@@ -80,14 +76,12 @@ public class FotoControl {
 				stmt.setString(2, idA);	
 				stmt.executeUpdate();
 			} catch (IOException e) {
-				System.out.println(e);
 			}
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				System.out.println(sqlException);
 			} finally {
 				if (con != null)
 					con.close();
