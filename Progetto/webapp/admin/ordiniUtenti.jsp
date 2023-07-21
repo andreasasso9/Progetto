@@ -8,16 +8,14 @@
 <%
 CarrelloDataSource cds=new CarrelloDataSource();
 LinkedList<Carrello> ordini=(LinkedList<Carrello>) cds.doRetrieveAll();
-Comparator<Carrello> comparator=(carrello1, carrello2)->{
-	return carrello1.getUsername().compareTo(carrello2.getUsername());
-};
-ordini.sort(comparator);
 %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Ordini Utenti</title>
+<script src="<%=request.getContextPath() %>/scripts/jquery.js"></script>
+<script src="<%=request.getContextPath() %>/scripts/ordina.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/ordini.css">
 </head>
 <body>
@@ -25,15 +23,20 @@ ordini.sort(comparator);
 		<ul>
 			<li><a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a></li>
 			<li><a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a></li>
-			<li><a onclick="">Ordina per cliente</a></li>
+			<li><a onclick="ordinaPerNome()">Ordina per cliente</a></li>
+			<li><input type="date" id="inizio"><input type="date" id="fine"><input type="button" value="Seleziona"
+			onclick="ordinaPerData($('input#inizio').val(), $('input#fine').val())"></li>
+			
 		</ul>
 	</aside>
-	<%for (Carrello c:ordini) { %>
-		<fieldset>
-		<legend><%=c.getUsername() %></legend>
-			<p><%=c.getData() %><br>
-			<%=c.getRiepilogo() %></p>
-		</fieldset>
-	<%} %>
+	<div class="scarpa">
+		<%for (Carrello c:ordini) { %>
+			<fieldset>
+			<legend><%=c.getUsername() %></legend>
+				<p id="data"><%=c.getData() %></p>
+				<p><%=c.getRiepilogo() %></p>
+			</fieldset>
+		<%} %>
+	</div>
 </body>
 </html>
