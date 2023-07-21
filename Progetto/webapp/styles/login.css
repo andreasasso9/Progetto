@@ -23,6 +23,11 @@ div#form {
 	justify-content: center;
 }
 
+div#link {
+	text-align: left;
+	width: 20%;
+}
+
 fieldset {
 	font-size: x-large;
 	transition: all 0.3s ease-in-out;
@@ -35,10 +40,11 @@ legend {
 	color: white;
 }
 
-div#form a {
+div#link a {
 	text-decoration: none;
 	color: white;
 	transition: all 0.3s ease-in-out;
+	font-size: large;
 }
 
 p {
@@ -53,7 +59,7 @@ input#submit, input#reset {
 	transition: all 0.3s ease-in-out;
 }
 
-div#form a:hover {
+div#link a:hover {
 	color: blue;
 }
 
@@ -72,3 +78,7 @@ fieldset:hover {
 	border-color: blue;
 }
 
+div#link ul {
+	list-style-type: circle;
+	color: white;
+}

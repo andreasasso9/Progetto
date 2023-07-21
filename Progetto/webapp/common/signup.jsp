@@ -7,6 +7,12 @@
 <script src="<%=request.getContextPath() %>/scripts/validate.js"></script>
 </head>
 <body>
+	<div id="link">
+		<ul>
+			<li><a href="login.jsp">Effettua il login</a></li>
+			<li><a href="index.jsp">Torna alla home</a></li>
+		</ul>
+	</div>
 	<div id="container">
 		<div id="form">
 			<fieldset>
@@ -39,9 +45,6 @@
 					<input type="reset" id="reset">
 				</form>
 				
-				<a href="login.jsp">Effettua il login</a><br>
-				<a href="index.jsp">Torna alla home</a><br>
-					
 				<%String errors=(String) request.getAttribute("errors");
 					
 					if (errors!=null){%>

@@ -22,8 +22,11 @@ ordini.sort(comparator);
 </head>
 <body>
 	<aside>
-		<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a><br><br><br>
-		<a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a>
+		<ul>
+			<li><a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a></li>
+			<li><a href="<%=request.getContextPath() %>/common/index.jsp">Torna alla home</a></li>
+			<li><a onclick="">Ordina per cliente</a></li>
+		</ul>
 	</aside>
 	<%for (Carrello c:ordini) { %>
 		<fieldset>

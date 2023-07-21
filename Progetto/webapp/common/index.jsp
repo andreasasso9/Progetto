@@ -49,9 +49,10 @@
 									<%}%>
 								</select><br>
 							<label for="quantità">Quantit&aacute;</label>
-							<input type="number" name="quantità" min="1" value="1" id="quantità">
+							<input type="number" name="quantita" min="1" value="1" id="quantità">
 						</div>
-							<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">							<input type="submit" value="Aggiungi al carrello">
+							<input type="text" name="scarpaId" style="visibility: hidden;" value="<%=s.getId() %>">
+							<input type="submit" value="Aggiungi al carrello">
 						</form>
 						<p>&euro;<%=s.getPrezzo() %></p>
 					<%} else { %>
