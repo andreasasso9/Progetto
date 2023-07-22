@@ -25,8 +25,8 @@
 						<%} %>
 					</select>
 					<input type="submit" value="Elimina" id="submit"><br>
-					<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina riservata all'admin</a>
 				</form>
+				<a id="home" href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina riservata all'admin</a>
 			</fieldset>
 		</div>
 	</div>

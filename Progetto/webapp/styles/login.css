@@ -40,7 +40,7 @@ legend {
 	color: white;
 }
 
-div#link a {
+div#link a, a#home {
 	text-decoration: none;
 	color: white;
 	transition: all 0.3s ease-in-out;
@@ -59,7 +59,7 @@ input#submit, input#reset {
 	transition: all 0.3s ease-in-out;
 }
 
-div#link a:hover {
+div#link a:hover, a#home:hover {
 	color: blue;
 }
 
