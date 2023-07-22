@@ -13,6 +13,13 @@
 			<li><a href="index.jsp">Torna alla home</a></li>
 		</ul>
 	</div>
+	<div id="errors">
+		<%String errors=(String) request.getAttribute("errors");
+					
+		if (errors!=null){%>
+			<p><%=errors %></p>
+		<%} %>		
+	</div>
 	<div id="container">
 		<div id="form">
 			<fieldset>
@@ -22,12 +29,6 @@
 					<input type="password" name="password" placeholder="Password" id="password"><br>
 					<input type="submit" value="Log in" id="submit">
 				</form>
-				
-				<%String errors=(String) request.getAttribute("errors");
-					
-				if (errors!=null){%>
-					<p><%=errors %></p>
-				<%} %>
 			</fieldset>
 		</div>
 	</div>

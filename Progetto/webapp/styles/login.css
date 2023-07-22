@@ -82,3 +82,13 @@ div#link ul {
 	list-style-type: circle;
 	color: white;
 }
+
+div#errors {
+	width: 20%;
+	float: right;
+	font-size: large;
+}
+
+div#errors p {
+	color: red;
+}

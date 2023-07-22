@@ -3,12 +3,14 @@ const emailPattern = /^\S+@\S+\.\S+$/;
 const phonePattern = /^[0-9]{10}$/;
 const etaPattern = /^\d+$/;
 const passPattern = /^.{8,}$/;
+const usernamePattern = /^\S*$/
 const nameErrorMessage = "<br>Inserisci solo lettere";
 const lastnameErrorMessage = "<br>Inserisci solo lettere";
 const emailErrorMessage = "<br>Una email valid deve essere del tipo username@domain.ext";
 const phoneErrorMessage = "<br>Un numero valido deve contenere 10 numeri";
 const etaErrorMessage = "<br>Inserisci solo numeri";
 const passErrorMessage = "<br>La password deve essere lunga almeno 8 caratteri"
+const usernameErrorMessage = "<br>Non inserire spazi"
 let count = 1;
 
 function validate() {
@@ -26,6 +28,10 @@ function validate() {
 	let spanEmail = document.getElementById("errorEmail");
 	if (!validateFormElem(form.email, emailPattern, spanEmail, emailErrorMessage)){
 		valid = false;
+	}
+	let spanUsername = document.getElementById("errorUsername")
+	if (!validateFormElem(form.username, usernamePattern, spanUsername, usernameErrorMessage)){
+		valid = false
 	}
 	
 	for (let i = 0; i < count; i++){
@@ -45,7 +51,9 @@ function validate() {
 	}
 	
 	let spanPassword=document.getElementById("errorPassword");
-	if (!validateFormElem(form.password, passPattern, spanPassword, passErrorMessage));
+	if (!validateFormElem(form.password, passPattern, spanPassword, passErrorMessage)){
+		valid=false
+	}
 	
 	return valid;
 }

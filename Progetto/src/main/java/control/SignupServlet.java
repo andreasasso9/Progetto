@@ -54,12 +54,17 @@ public class SignupServlet extends HttpServlet implements StringFunctions {
 				errors+="Inserisci l'età<br>";
 			if (username.isBlank())
 				errors+="Inserisci la username<br>";
+			if (username.contains(" "))
+				errors+="Non inserire spazi nella username<br>";
 			if (email.isBlank())
 				errors+="Inserisci la email<br>";
 			if (password.isBlank())
 				errors+="Inserisci la password<br>";
 			else if(password.length()<8)
-				errors+="La password deve essere lunga almeno 8 caratteri";
+				errors+="La password deve essere lunga almeno 8 caratteri<br>";
+			for (String s:telefoni)
+				if (s.length()!=10)
+					errors+="Il numero di telefono deve essere di 10 cifre";
 
 			if (errors.isEmpty()) {
 				usernameValid=check.checkUsername(username);

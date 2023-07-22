@@ -13,11 +13,18 @@
 			<li><a href="index.jsp">Torna alla home</a></li>
 		</ul>
 	</div>
+	<div id="errors">
+		<%String errors=(String) request.getAttribute("errors");
+					
+		if (errors!=null){%>
+			<p><%=errors %></p>
+		<%} %>
+	</div>
 	<div id="container">
 		<div id="form">
 			<fieldset>
 			<legend>Registrati</legend>
-				<form action="Signup" method="post">
+				<form action="Signup" method="post" onsubmit="return validate()">
 					<input type="text" name="nome" placeholder="Nome"
 					onchange="validateFormElem(this, nameOrLastnamePattern, document.getElementById('errorName'), nameErrorMessage)"><span id="errorName"></span><br>
 					
@@ -33,7 +40,8 @@
 						<input type="button" value="+" onclick="addPhone()"><span id="errorPhone0"></span>
 					</div>
 					
-					<input type="text" name="username" placeholder="Username"><br>
+					<input type="text" name="username" placeholder="Username"
+					onchange="validateFormElem(this, usernamePattern, document.getElementById('errorUsername'), usernameErrorMessage)"><span id="errorUsername"></span>
 					
 					<input type="text" name="email" placeholder="E-mail"
 					onchange="validateFormElem(this, emailPattern, document.getElementById('errorEmail'), emailErrorMessage)"><span id="errorEmail"></span><br>
@@ -44,12 +52,6 @@
 					<input type="submit" id="submit">
 					<input type="reset" id="reset">
 				</form>
-				
-				<%String errors=(String) request.getAttribute("errors");
-					
-					if (errors!=null){%>
-						<p><%=errors %></p>
-					<%} %>
 			</fieldset>
 		</div>
 	</div>
