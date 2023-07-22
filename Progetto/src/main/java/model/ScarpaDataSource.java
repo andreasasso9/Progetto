@@ -49,7 +49,6 @@ public class ScarpaDataSource implements IBeanDAO<Scarpa> {
 			ps.executeUpdate();
 			con.commit();
 		}catch (SQLException e) {
-			e.printStackTrace();
 			return false;
 		}finally {
 			try {

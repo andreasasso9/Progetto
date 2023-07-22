@@ -24,7 +24,6 @@ public class EliminaServlet extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath()+"/admin/delete.jsp");
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 

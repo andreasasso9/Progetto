@@ -27,7 +27,6 @@ public class OrdinaServlet extends HttpServlet {
 			session.setAttribute("carrello", null);
 			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 

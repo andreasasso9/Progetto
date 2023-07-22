@@ -81,7 +81,6 @@ public class CarrelloDataSource implements IBeanDAO<Carrello>{
 			}
 			con.commit();
 		}catch (SQLException e) {
-			e.printStackTrace();
 			return false;
 		}finally {
 			try {

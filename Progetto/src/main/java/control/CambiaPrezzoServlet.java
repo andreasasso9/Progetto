@@ -24,7 +24,6 @@ public class CambiaPrezzoServlet extends HttpServlet {
 		try {
 			ds.updatePrezzo(scarpaId, prezzo);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		
 		response.sendRedirect(request.getContextPath()+"/admin/add.jsp");

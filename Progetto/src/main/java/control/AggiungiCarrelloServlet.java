@@ -42,7 +42,6 @@ public class AggiungiCarrelloServlet extends HttpServlet {
 			session.setAttribute("carrello", carrello);
 			response.sendRedirect(request.getContextPath()+"/common/index.jsp");
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 

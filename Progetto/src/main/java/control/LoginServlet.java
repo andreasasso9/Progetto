@@ -62,7 +62,6 @@ public class LoginServlet extends HttpServlet implements StringFunctions{
 				dispatcher.forward(request, response);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 
 	}

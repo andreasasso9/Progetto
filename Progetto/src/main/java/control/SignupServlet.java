@@ -85,7 +85,6 @@ public class SignupServlet extends HttpServlet implements StringFunctions {
 			request.setAttribute("errors", errors);
 			dispatcherToSignup.forward(request, response);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 
