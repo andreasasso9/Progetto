@@ -13,13 +13,11 @@
 			<li><a href="index.jsp">Torna alla home</a></li>
 		</ul>
 	</div>
-	<div id="errors">
-		<%String errors=(String) request.getAttribute("errors");
+	<%String errors=(String) request.getAttribute("errors");
 					
-		if (errors!=null){%>
-			<p><%=errors %></p>
-		<%} %>		
-	</div>
+	if (errors!=null){%>
+		<p><%=errors %></p>
+	<%} %>		
 	<div id="container">
 		<div id="form">
 			<fieldset>

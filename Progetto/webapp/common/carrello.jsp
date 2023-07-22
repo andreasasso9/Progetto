@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="DTO.ScarpaOrdine"%>
 <%@page import="DTO.Scarpa"%>
 <%@page import="DTO.Carrello"%>
