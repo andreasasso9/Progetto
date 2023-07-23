@@ -1,14 +1,12 @@
 @charset "ISO-8859-1";
 
 body {
-	max-height: 100vw;
-	max-width: 100vw;
 	background-image: url("../images/pexels-melvin-buezo-2529157.jpg");
 	background-repeat: no-repeat;
-	background-position: top 0% center;
+	background-position: center ;
 	background-attachment: fixed;
-	background-size: contain;
 	background-color: #fbc40e;
+	background-size: contain;
 }
 
 div#container {
@@ -23,11 +21,6 @@ div#form {
 	justify-content: center;
 }
 
-div#link {
-	text-align: left;
-	width: 20%;
-}
-
 fieldset {
 	font-size: x-large;
 	transition: all 0.3s ease-in-out;
@@ -40,11 +33,11 @@ legend {
 	color: white;
 }
 
-div#link a, a#home {
+a.home {
 	text-decoration: none;
 	color: white;
 	transition: all 0.3s ease-in-out;
-	font-size: large;
+	font-size: xx-large;
 }
 
 p {
@@ -59,7 +52,7 @@ input#submit, input#reset {
 	transition: all 0.3s ease-in-out;
 }
 
-div#link a:hover, a#home:hover {
+a.home:hover {
 	color: blue;
 }
 
@@ -73,8 +66,7 @@ input.dati {
 }
 
 fieldset:hover {
-	position: relative;
-	bottom: 10px;
+	transform: scale(1.1);
 	border-color: blue;
 }
 
@@ -89,4 +81,54 @@ p {
 	float: right;
 	font-size: large;
 	padding-right: 5%;
+}
+
+@media screen and (max-width: 1200px) {
+	body {
+		max-width: 1000px;
+	}
+	
+	a.home {
+		font-size: x-large;
+	}
+	
+}
+
+@media screen and (max-width: 980px) {
+	body {
+		max-width: 850px;
+	}
+	
+	a.home {
+		font-size: large;
+	}
+	
+}
+
+@media screen and (max-width: 750px) {
+	body {
+		max-width: 600px;
+	}
+	
+	a.home {
+		font-size: medium;
+	}
+	
+}
+
+@media screen and (max-width: 540px) {
+	body {
+		max-width: 450px;
+	}
+	
+	a.home {
+		font-size: small;
+	}
+	
+}
+
+@media screen and (max-width: 360px) {
+	body {
+		max-width: 450px;
+	}
 }

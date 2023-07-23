@@ -9,14 +9,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title>Add</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/add.css">
 </head>
 <body>
-	<aside>
-		<a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina<br>riservata all'admin</a>
-	</aside>
+	<ul>
+		<li><a href="<%=request.getContextPath() %>/admin/reserved.jsp">Torna alla pagina riservata all'admin</a></li>
+	</ul>
 	<div class="container">
 		<div class="form">
 			<fieldset>

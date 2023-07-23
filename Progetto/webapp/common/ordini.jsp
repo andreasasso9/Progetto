@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title>Ordini</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/ordini.css">
 </head>

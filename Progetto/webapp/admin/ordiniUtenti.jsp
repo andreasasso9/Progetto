@@ -12,7 +12,7 @@ LinkedList<Carrello> ordini=(LinkedList<Carrello>) cds.doRetrieveAll();
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title>Ordini Utenti</title>
 <script src="<%=request.getContextPath() %>/scripts/jquery.js"></script>
 <script src="<%=request.getContextPath() %>/scripts/ordina.js"></script>

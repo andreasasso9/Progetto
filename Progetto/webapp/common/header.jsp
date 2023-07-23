@@ -13,7 +13,7 @@ if (carrello==null){
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title></title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/index.css">
 <script src="<%=request.getContextPath() %>/scripts/jquery.js"></script>

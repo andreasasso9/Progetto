@@ -1,14 +1,12 @@
 @charset "ISO-8859-1";
 
 body {
-	max-height: 100%;
-	max-width: 100%;
 	background-image: url("../images/pexels-melvin-buezo-2529157.jpg");
 	background-repeat: no-repeat;
-	background-position: center top 0%;
+	background-position: center ;
 	background-attachment: fixed;
-	background-size: contain;
 	background-color: #fbc40e;
+	background-size: contain;
 }
 
 div {
@@ -35,4 +33,34 @@ a:hover {
 	color: blue;
 	position: relative;
 	bottom: 2px;
+}
+
+@media screen and (max-width: 1200px) {
+	body {
+		max-width: 1000px;
+	}
+}
+
+@media screen and (max-width: 980px) {
+	body {
+		max-width: 850px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	body {
+		max-width: 600px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	body {
+		max-width: 450px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	body {
+		max-width: 450px;
+	}
 }
