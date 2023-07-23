@@ -71,10 +71,12 @@ ul li {
 fieldset#ordine #vuoto {
 	color: white;
 	text-align: center;
+	font-size: xx-large;
 }
 
 fieldset#ordine #vuoto a{
 	text-decoration: underline;
+	font-size: inherit;
 }
 
 a:hover, li:hover {
@@ -99,8 +101,12 @@ fieldset#ordine fieldset#scarpa:hover {
 		max-width: 850px;
 	}
 	
-	h1, h1 a {
-		font-size: large;
+	fieldset#ordine #vuoto {
+	font-size: x-large;
+}
+
+	fieldset#ordine #vuoto a{
+		font-size: inherit;
 	}
 
 }
@@ -109,20 +115,42 @@ fieldset#ordine fieldset#scarpa:hover {
 	body {
 		max-width: 600px;
 	}
+	
+	fieldset#ordine #vuoto {
+	font-size: large;
+}
+
+	fieldset#ordine #vuoto a{
+		font-size: inherit;
+	}
 }
 
 @media screen and (max-width: 540px) {
 	body {
 		max-width: 450px;
 	}
+	
+	fieldset#ordine #vuoto {
+	font-size: medium;
+}
+
+	fieldset#ordine #vuoto a{
+		font-size: inherit;
+	}
 }
 	
-	h1, h1 a {
-		font-size: medium;
-	}
+	
 
 @media screen and (max-width: 360px) {
 	body {
 		max-width: 450px;
+	}
+	
+	fieldset#ordine #vuoto {
+	font-size: small;
+}
+
+	fieldset#ordine #vuoto a{
+		font-size: inherit;
 	}
 }
