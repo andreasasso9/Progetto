@@ -98,6 +98,11 @@ fieldset#ordine fieldset#scarpa:hover {
 	body {
 		max-width: 850px;
 	}
+	
+	h1, h1 a {
+		font-size: large;
+	}
+
 }
 
 @media screen and (max-width: 750px) {
@@ -110,7 +115,10 @@ fieldset#ordine fieldset#scarpa:hover {
 	body {
 		max-width: 450px;
 	}
-}
+	
+	h1, h1 a {
+		font-size: medium;
+	}
 
 @media screen and (max-width: 360px) {
 	body {
