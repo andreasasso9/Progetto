@@ -20,14 +20,14 @@
 		<div id="form">
 			<fieldset>
 			<legend>Registrati</legend>
-				<form action="Signup" method="post" onsubmit="return validate()">
-					<input type="text" name="nome" placeholder="Nome"
+				<form action="Signup" method="post" id="regForm" onsubmit="return validate()">
+					<input type="text" name="nome" id="nome" placeholder="Nome" autofocus
 					onchange="validateFormElem(this, nameOrLastnamePattern, document.getElementById('errorName'), nameErrorMessage)"><span id="errorName"></span><br>
 					
-					<input type="text" name="cognome" placeholder="Cognome"
+					<input type="text" name="cognome" id="cognome" placeholder="Cognome"
 					onchange="validateFormElem(this, nameOrLastnamePattern, document.getElementById('errorLastname'), nameErrorMessage)"><span id="errorLastname"></span><br>
 					
-					<input type="text" name="età" placeholder="Età"
+					<input type="text" name="età" id="età" placeholder="Età"
 					onchange="validateFormElem(this, etaPattern, document.getElementById('errorEtà'), etaErrorMessage)"><span id="errorEtà"></span><br>
 					
 					<div id="phones">
@@ -36,13 +36,13 @@
 						<input type="button" value="+" onclick="addPhone()"><span id="errorPhone0"></span>
 					</div>
 					
-					<input type="text" name="username" placeholder="Username"
+					<input type="text" name="username" id="username" placeholder="Username"
 					onchange="validateFormElem(this, usernamePattern, document.getElementById('errorUsername'), usernameErrorMessage)"><span id="errorUsername"></span>
 					
-					<input type="text" name="email" placeholder="E-mail"
+					<input type="text" name="email" id="email" placeholder="E-mail"
 					onchange="validateFormElem(this, emailPattern, document.getElementById('errorEmail'), emailErrorMessage)"><span id="errorEmail"></span><br>
 					
-					<input type="password" name="password" placeholder="password"
+					<input type="password" name="password" id="password" placeholder="password"
 					onchange="validateFormElem(this, passPattern, document.getElementById('errorPassword'), passErrorMessage)"><span id="errorPassword"></span><br>
 					
 					<input type="submit" id="submit">

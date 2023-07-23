@@ -4,6 +4,9 @@ const phonePattern = /^[0-9]{10}$/;
 const etaPattern = /^\d+$/;
 const passPattern = /^.{8,}$/;
 const usernamePattern = /^\S*$/
+const cvvPattern = /^[0-9]{3}$/
+const scadenzaPattern = /^[0-9]{2}\/[0-9]{2}$/
+const numCartaPattern = /^[0-9]{16}$/
 const nameErrorMessage = "<br>Inserisci solo lettere";
 const lastnameErrorMessage = "<br>Inserisci solo lettere";
 const emailErrorMessage = "<br>Una email valid deve essere del tipo username@domain.ext";
@@ -11,11 +14,14 @@ const phoneErrorMessage = "<br>Un numero valido deve contenere 10 numeri";
 const etaErrorMessage = "<br>Inserisci solo numeri";
 const passErrorMessage = "<br>La password deve essere lunga almeno 8 caratteri"
 const usernameErrorMessage = "<br>Non inserire spazi"
+const cvvErrorMessage = "<br>Inserisci 3 cifre"
+const scadenzaErrorMessage = "<br>La scadenza deve essere del formato mm/yy"
+const numCartaErrorMessage = "<br>Inserisci 16 cifre"
 let count = 1;
 
 function validate() {
 	let valid = true;	
-	let form = document.getElementById("form");
+	let form = document.getElementById("regForm");
 	
 	let spanName = document.getElementById("errorName");
 	if(!validateFormElem(form.nome, nameOrLastnamePattern, spanName, nameErrorMessage)){
@@ -55,6 +61,20 @@ function validate() {
 		valid=false
 	}
 	
+	let spanCvv=document.getElementById("errorCvv")
+	if (!validateFormElem(form.cvv, cvvPattern, spanCvv, cvvErrorMessage)) {
+		valid=false;
+	}
+	
+	let spanScadenza=document.getElementById("errorScadenza")
+	if (!validateFormElem(form.scadenza, scadenzaPattern, spanScadenza, scadenzaErrorMessage)) {
+		valid=false
+	}
+	
+	let spanNumCarta=document.getElementById("errorNumCarta")
+	if (!validateFormElem(form.numCarta, numCartaPattern, spanNumCarta, numCartaErrorMessage)) {
+		valid=false
+	}
 	return valid;
 }
 

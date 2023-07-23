@@ -24,7 +24,7 @@
 		<%} else { %>
 			<legend>Saldo: <%=carrello.getScarpe().stream().mapToDouble(s->s.getPrezzo()*s.getQuantità()).sum() %></legend>
 			<ul>
-				<li><a href="<%=request.getContextPath() %>/common/OrdinaServlet">Acquista</a></li>
+				<li><a href="<%=request.getContextPath() %>/common/pagamento.jsp">Acquista</a></li>
 				<li><a href="<%=request.getContextPath() %>/common/SvuotaCarrelloServlet">Svuota il carrello</a></li>
 				<li><a href="<%=request.getContextPath() %>/common/index.jsp">Trona alla home</a></li>
 			</ul>
