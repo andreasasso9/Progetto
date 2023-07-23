@@ -3,15 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Collection" %>
-<%
-	Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe");
-%>
+
+<%Collection<?> scarpe=(Collection<?>) getServletContext().getAttribute("scarpe"); %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title>Add</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/add.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/select.css">
 </head>
 <body>
 	<ul>

@@ -10,6 +10,7 @@
 <meta charset="ISO-8859-1" name="viewport" content="initial-scale=1, width=device-width">
 <title>Elimina</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/login.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/select.css">
 </head>
 <body>
 	<div id="container">
