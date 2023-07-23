@@ -62,5 +62,6 @@
 			<%}
 		}%>
 	</div> <!-- fine div foto -->
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

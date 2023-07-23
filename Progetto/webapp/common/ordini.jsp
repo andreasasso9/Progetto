@@ -30,5 +30,6 @@
 			<%=c.getRiepilogo() %></p>
 		</fieldset>
 	<%}%>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

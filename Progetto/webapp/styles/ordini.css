@@ -9,11 +9,26 @@ body {
 	background-size: contain;
 }
 
+footer {
+	width: 100%;
+	background-color: #fbc40e;
+	color: white;
+	position: fixed;
+	text-align: center;
+	bottom: 0%;
+	z-index: 2;
+}
+
+footer img {
+	width: 15px;
+	height: auto;
+}
+
 fieldset {
 	width: 20%;
 	margin: 2% 3% 2% 4%;
 	background-color: #fbc40e;
-	font-size: large;
+	font-size: x-large;
 	border-color: white;
 	transition: all 0.3s ease-in-out;
 	border-style: double;
@@ -78,6 +93,10 @@ div ul {
 		font-size: large;
 	}
 	
+	fieldset {
+		font-size: large;
+	}
+	
 }
 
 @media screen and (max-width: 750px) {
@@ -88,6 +107,10 @@ div ul {
 	a {
 		font-size: large;
 	}
+	
+	fieldset {
+		font-size: medium;
+	}
 }
 
 @media screen and (max-width: 540px) {
@@ -96,6 +119,10 @@ div ul {
 	}
 	
 	a {
+		font-size: small;
+	}
+	
+	fieldset {
 		font-size: small;
 	}
 	
